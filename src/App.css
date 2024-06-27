@@ -387,34 +387,23 @@
 }
 
 .custom-link {
-  color: #4a90e2; /* A brighter shade of blue for better visibility on dark backgrounds */
+  color: #4a90e2;
   text-decoration: none;
-  transition: color 0.3s ease;
-  border: 1px solid #4a90e2;
+  transition: all 0.3s ease;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   display: inline-flex;
   align-items: center;
+  background-color: transparent;
+  border: none;
 }
 
 .custom-link:hover {
-  color: #ffffff; /* A slightly darker shade for hover effect */
-  background-color: #357ab7; /* A darker shade of the brighter blue for hover effect */
+  color: #ffffff;
+  background-color: #357ab7;
 }
 
-.custom-link::before {
-  font-family: 'FontAwesome';
-  margin-right: 0.5rem; /* Add some space between the icon and the text */
+.custom-link svg {
+  margin-right: 0.5rem;
 }
 
-.custom-link[href^="https://linkedin.com"]::before {
-  content: '\f08c';
-}
-
-.custom-link[href^="https://github.com"]::before {
-  content: '\f09b';
-}
-
-.custom-link[href^="mailto:"]::before {
-  content: '\f0e0';
-}
