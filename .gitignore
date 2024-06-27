@@ -29,3 +29,4 @@ yarn-error.log*
 .aider.openai.api.key
 .aider.tokens.json
 .aider.tags.cache.v3
+directive.md
