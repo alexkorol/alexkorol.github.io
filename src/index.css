@@ -11,3 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Additions for AI Art Section */
+.ai-art-section {
+  padding: 20px;
+}
+
+.scrollable-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: auto;
+}
+
+.gallery-item {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 10px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s, transform 1s;
+}
+
+.placeholder {
+  height: auto;
+  background-color: #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}

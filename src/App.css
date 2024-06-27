@@ -10,13 +10,16 @@
   background-color: #1a202c;
 }
 
+
+
 .text-gray-900 {
   color: #1a202c;
 }
 
 .dark\:text-gray-100 {
-  color: #d4d4d4; /* Corrected to match the light text color in dark mode */
+  color: #f7fafc; /* Consistent with other light text colors */
 }
+
 
 .fixed {
   position: fixed;
@@ -50,9 +53,6 @@
   background-color: #ffffff;
 }
 
-.dark\:bg-gray-800 {
-  background-color: #1a202c; /* Even darker background color for dark mode */
-}
 
 .shadow-md {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -68,29 +68,34 @@
   margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: 3rem; /* Added padding-top to prevent overlap */
 }
 
 @media (min-width: 640px) {
   .container {
     max-width: 640px;
+    padding-top: 3rem; /* Added padding-top to prevent overlap */
   }
 }
 
 @media (min-width: 768px) {
   .container {
     max-width: 768px;
+    padding-top: 3rem; /* Added padding-top to prevent overlap */
   }
 }
 
 @media (min-width: 1024px) {
   .container {
     max-width: 1024px;
+    padding-top: 3rem; /* Added padding-top to prevent overlap */
   }
 }
 
 @media (min-width: 1280px) {
   .container {
     max-width: 1280px;
+    padding-top: 3rem; /* Added padding-top to prevent overlap */
   }
 }
 
@@ -158,19 +163,19 @@
 }
 
 .dark\:text-gray-300 {
-  color: #a0aec0; /* Corrected to match the slightly darker text color in dark mode */
+  color: #cbd5e0; /* Consistent with other slightly darker text colors */
 }
 
 .text-navbar-button {
   color: #333333; /* Darker color specifically for navbar buttons */
 }
 
-.hover\:bg-gray-200:hover {
-  background-color: #d2e0e8; /* Corrected to match the even lighter shade for hover effect */
-}
 
-.dark\:hover\:bg-gray-700:hover {
-  background-color: #1a202c; /* Corrected to match the even darker shade for hover effect in dark mode */
+
+
+
+.text-navbar-button:hover {
+  color: #ffffff; /* Corrected to match the light text color in light mode on hover */
 }
 
 .bg-blue-500 {
@@ -252,9 +257,7 @@
 }
 
 @media (min-width: 768px) {
-  .md\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Corrected to match the grid template columns for medium screens */
-  }
+
 }
 
 .gap-8 {
@@ -277,9 +280,6 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
 }
 
-.hover\:shadow-xl:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-}
 
 .transition-shadow {
   transition-property: box-shadow;
@@ -306,15 +306,9 @@
 }
 
 @media (min-width: 768px) {
-  .md\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Corrected to match the grid template columns for medium screens */
-  }
 }
 
 @media (min-width: 1024px) {
-  .lg\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr)); /* Corrected to match the grid template columns for large screens */
-  }
 }
 
 .flex-grow {
@@ -365,13 +359,31 @@
   color: #718096;
 }
 
-.dark\:text-gray-400 {
-  color: #808080; /* Even darker text color for dark mode */
-}
 
 .flex-grow {
   flex-grow: 1;
 }
 .mb-16 {
   margin-bottom: 4rem;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+}
+
+.duration-500 {
+  transition-duration: 500ms;
+}
+.custom-link {
+  color: #6200ea; /* A more pleasing color, you can change it to any color you prefer */
+  text-decoration: none;
+  transition: color 0.3s ease;
+  border: 1px solid #6200ea;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.custom-link:hover {
+  color: #ffffff; /* A slightly darker shade for hover effect */
+  background-color: #6200ea;
 }
