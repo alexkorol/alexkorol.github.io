@@ -46,7 +46,15 @@ function App() {
                     ? 'bg-blue-500 text-white shadow-lg'
                     : 'text-navbar-button dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
-                onClick={() => setActiveSection(item.toLowerCase())}
+                onClick={() => {
+                  if (item === 'Projects') {
+                    window.location.href = 'https://alexkorol.github.io/projects';
+                  } else if (item === 'AI Art') {
+                    window.location.href = 'https://alexkorol.github.io/aiart';
+                  } else {
+                    setActiveSection(item.toLowerCase());
+                  }
+                }}
               >
                 {item}
               </button>
