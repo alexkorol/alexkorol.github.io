@@ -32,6 +32,29 @@ const AIArtSection = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.add('hide-scrollbar');
+    const images = galleryRef.current.querySelectorAll('img');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    images.forEach((img) => {
+      observer.observe(img);
+    });
+
+    return () => {
+      document.body.classList.remove('hide-scrollbar');
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div className="ai-art-section">
       <h2>AI Art Section</h2>

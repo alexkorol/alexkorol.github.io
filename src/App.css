@@ -1,3 +1,4 @@
+/* Ensure consistent naming conventions */
 .min-h-screen {
   min-height: 100vh;
 }
@@ -7,19 +8,16 @@
 }
 
 .dark\:bg-gray-900 {
-  background-color: #1a202c;
+  background-color: #1a202c; /* Original dark background color */
 }
-
-
 
 .text-gray-900 {
   color: #1a202c;
 }
 
 .dark\:text-gray-100 {
-  color: #f7fafc; /* Consistent with other light text colors */
+  color: #f7fafc; /* Corrected to match the light text colors */
 }
-
 
 .fixed {
   position: fixed;
@@ -53,6 +51,9 @@
   background-color: #ffffff;
 }
 
+.dark\:bg-gray-800 {
+  background-color: #1c3d5a; /* Dark blue color */
+}
 
 .shadow-md {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -163,19 +164,16 @@
 }
 
 .dark\:text-gray-300 {
-  color: #cbd5e0; /* Consistent with other slightly darker text colors */
+  color: #cbd5e0; /* Corrected to match the slightly darker text colors */
 }
 
 .text-navbar-button {
-  color: #333333; /* Darker color specifically for navbar buttons */
+  color: #4a5568; /* Slightly darker shade for better readability */
 }
 
-
-
-
-
 .text-navbar-button:hover {
-  color: #ffffff; /* Corrected to match the light text color in light mode on hover */
+  color: #ffffff; /* Light color for text on hover */
+  background-color: #2d3748; /* Dark background on hover */
 }
 
 .bg-blue-500 {
@@ -257,7 +255,9 @@
 }
 
 @media (min-width: 768px) {
-
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .gap-8 {
@@ -273,13 +273,12 @@
 }
 
 .dark\:bg-gray-800 {
-  background-color: #2d3748;
+  background-color: #2d3748; /* Corrected to match the dark background color in dark mode */
 }
 
 .shadow-lg {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
 }
-
 
 .transition-shadow {
   transition-property: box-shadow;
@@ -306,9 +305,21 @@
 }
 
 @media (min-width: 768px) {
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 1024px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .flex-grow {
@@ -359,10 +370,10 @@
   color: #718096;
 }
 
-
 .flex-grow {
   flex-grow: 1;
 }
+
 .mb-16 {
   margin-bottom: 4rem;
 }
@@ -374,16 +385,36 @@
 .duration-500 {
   transition-duration: 500ms;
 }
+
 .custom-link {
-  color: #6200ea; /* A more pleasing color, you can change it to any color you prefer */
+  color: #4a90e2; /* A brighter shade of blue for better visibility on dark backgrounds */
   text-decoration: none;
   transition: color 0.3s ease;
-  border: 1px solid #6200ea;
+  border: 1px solid #4a90e2;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
+  display: inline-flex;
+  align-items: center;
 }
 
 .custom-link:hover {
   color: #ffffff; /* A slightly darker shade for hover effect */
-  background-color: #6200ea;
+  background-color: #357ab7; /* A darker shade of the brighter blue for hover effect */
+}
+
+.custom-link::before {
+  font-family: 'FontAwesome';
+  margin-right: 0.5rem; /* Add some space between the icon and the text */
+}
+
+.custom-link[href^="https://linkedin.com"]::before {
+  content: '\f08c';
+}
+
+.custom-link[href^="https://github.com"]::before {
+  content: '\f09b';
+}
+
+.custom-link[href^="mailto:"]::before {
+  content: '\f0e0';
 }
