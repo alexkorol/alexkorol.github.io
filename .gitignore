@@ -30,3 +30,4 @@ yarn-error.log*
 .aider.tokens.json
 .aider.tags.cache.v3
 directive.md
+example.js
