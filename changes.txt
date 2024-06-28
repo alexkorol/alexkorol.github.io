@@ -1,3 +1,60 @@
+To address the issues with the card elements taking up too much width and clipping out to the right side on mobile resolutions, you can make the following adjustments to your CSS and components:
+
+1. Update the CSS for Card Container
+Modify the CSS to ensure that the cards have appropriate padding and margins to fit within the viewport.
+
+Add these styles to App.css:
+css
+Copy code
+/* Ensure consistent padding on both sides */
+.card-container {
+  padding: 1rem;
+}
+
+/* Ensure cards stack properly on smaller screens */
+@media (max-width: 640px) {
+  .card-container {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Adjust grid columns for larger screens */
+@media (min-width: 640px) {
+  .card-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+2. Update the Card Component
+Ensure the Card component uses the CSS classes correctly.
+
+Card.js:
+javascript
+Copy code
+import React from 'react';
+
+const Card = ({ className, children }) => {
+  return (
+    <div className={`rounded-lg shadow-lg p-6 m-2 ${className}`}>
+      {children}
+    </div>
+  );
+};
+
+export default Card;
+3. Update the App.js for Card Layout
+Ensure the grid layout in App.js uses the correct CSS class for responsive behavior.
+
+App.js:
+javascript
+Copy code
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Card from './Card';
@@ -157,3 +214,8 @@ function App() {
 }
 
 export default App;
+Summary of Changes:
+CSS Adjustments: Added styles to ensure padding on both sides and to define grid columns based on screen size.
+Card Component: Included margin for the Card component.
+App Component: Used a specific CSS class (card-container) for responsive behavior and ensured grid layout adapts to screen size.
+These changes should resolve the issues with card width and clipping on mobile resolutions.

@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
 
 const AIArtSection = () => {
   const years = ['2024', '2023', '2022', '2021'];
@@ -32,40 +32,16 @@ const AIArtSection = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.classList.add('hide-scrollbar');
-    const images = galleryRef.current.querySelectorAll('img');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          observer.unobserve(img);
-        }
-      });
-    });
-
-    images.forEach((img) => {
-      observer.observe(img);
-    });
-
-    return () => {
-      document.body.classList.remove('hide-scrollbar');
-      observer.disconnect();
-    };
-  }, []);
-
   return (
-    <div className="ai-art-section">
-      <h2>AI Art Section</h2>
-      <div className="scrollable-gallery" ref={galleryRef}>
-        {years.map((year) => (
-          <div key={year} className="gallery-item">
-            <h3>{year}</h3>
-            <div className="placeholder">Placeholder for {year} AI Art</div>
+    <div ref={galleryRef} className="gallery">
+      {years.map(year => (
+        <div key={year} className="gallery-item">
+          <h2>{year}</h2>
+          <div className="art-container">
+            <img src={`/path/to/art/${year}.jpg`} alt={`AI Art ${year}`} />
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };

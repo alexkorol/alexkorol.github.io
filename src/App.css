@@ -1,3 +1,7 @@
+html, body {
+  overflow-x: hidden;
+}
+
 /* Ensure consistent naming conventions */
 .min-h-screen {
   min-height: 100vh;
@@ -70,33 +74,73 @@
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 3rem; /* Added padding-top to prevent overlap */
+  overflow-x: hidden;
 }
 
 @media (min-width: 640px) {
   .container {
     max-width: 640px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     padding-top: 3rem; /* Added padding-top to prevent overlap */
+    overflow-x: hidden;
   }
 }
 
 @media (min-width: 768px) {
   .container {
     max-width: 768px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     padding-top: 3rem; /* Added padding-top to prevent overlap */
+    overflow-x: hidden;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
     max-width: 1024px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     padding-top: 3rem; /* Added padding-top to prevent overlap */
+    overflow-x: hidden;
   }
 }
 
 @media (min-width: 1280px) {
   .container {
     max-width: 1280px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     padding-top: 3rem; /* Added padding-top to prevent overlap */
+    overflow-x: hidden;
+  }
+}
+
+/* Ensure consistent padding on both sides */
+.card-container {
+  padding: 1rem;
+}
+
+/* Ensure cards stack properly on smaller screens */
+@media (max-width: 640px) {
+  .card-container {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Adjust grid columns for larger screens */
+@media (min-width: 640px) {
+  .card-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -254,7 +298,7 @@
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -304,19 +348,19 @@
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
