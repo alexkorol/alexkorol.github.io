@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Card = ({ className, children }) => {
+const Card = ({ title, content }) => {
   return (
-    <div className={`rounded-lg shadow-lg p-6 m-2 ${className}`}>
-      {children}
+    <div className="card border rounded-lg p-4 shadow-md">
+      <h2 className="text-xl font-semibold mb-2">{title}</h2>
+      <div className="card-content">
+        <p>{content}</p>
+      </div>
     </div>
   );
 };
