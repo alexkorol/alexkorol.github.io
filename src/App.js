@@ -62,6 +62,8 @@ function App() {
                 onClick={() => {
                   if (item === 'SREF Vault') {
                     window.open('https://alexkorol.github.io/seedvault', '_blank');
+                  } else if (item === 'Get in Touch') {
+                    // Handle the 'Get in Touch' button click
                   } else {
                     setActiveSection(item.toLowerCase());
                   }
@@ -81,12 +83,26 @@ function App() {
       </nav>
 
       <main className="container mx-auto px-6 py-16">
-        {renderSection(activeSection)}
+        {activeSection === 'get in touch' ? (
+          <div className="text-center">
+            <h1 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Get in Touch</h1>
+            <p>
+              <a href="https://www.linkedin.com/in/alexei-korol/" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faLinkedin} className="mr-2" />
+              </a>
+              <a href="https://github.com/alexkorol" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faGithub} className="mr-2" />
+              </a>
+              <a href="mailto:korolalexei@gmail.com">
+                <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
+              </a>
+            </p>
+          </div>
+        ) : (
+          renderSection(activeSection)
+        )}
       </main>
 
-      <footer className="text-center p-2 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 mt-12">
-        <p>&copy; 2024 Alex Korol.</p>
-      </footer>
     </div>
   );
 }

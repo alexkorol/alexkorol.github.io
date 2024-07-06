@@ -57,13 +57,13 @@ const HomeSection = () => {
       title: 'Get in Touch', 
       content: (
         <div>
-          <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" rel="noopener noreferrer" className="text-blue-500 dark:text-blue-300 hover:underline">
+          <a href="https://www.linkedin.com/in/alexei-korol/" target="_blank" rel="noopener noreferrer" className="text-blue-500 dark:text-blue-300 hover:underline">
             <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
           </a>
-          <a href="https://github.com/your-github-profile" target="_blank" rel="noopener noreferrer" className="text-blue-500 dark:text-blue-300 hover:underline">
+          <a href="https://github.com/alexkorol" target="_blank" rel="noopener noreferrer" className="text-blue-500 dark:text-blue-300 hover:underline">
             <FontAwesomeIcon icon={faGithub} /> GitHub
           </a>
-          <a href="mailto:your-email@example.com" className="text-blue-500 dark:text-blue-300 hover:underline">
+          <a href="mailto:korolalexei@gmail.com" className="text-blue-500 dark:text-blue-300 hover:underline">
             <FontAwesomeIcon icon={faEnvelope} /> Email
           </a>
         </div>
