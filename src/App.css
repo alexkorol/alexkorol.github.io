@@ -243,10 +243,17 @@ h1 {
   color: transparent;
 }
 
-.card-container {
+.card-container-home {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(calc(33.333% - 20px), 1fr));
-  gap: 20px; /* Reverted to original gap */
+  grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 20px), 1fr));
+  gap: 20px;
+  padding: 1rem;
+}
+
+.card-container-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(50% - 20px), 1fr));
+  gap: 20px;
   padding: 1rem;
 }
 

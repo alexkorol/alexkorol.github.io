@@ -37,10 +37,16 @@ const HomeSection = () => {
     {
       title: 'Projects',
       content: (
-        <ul>
-          <li>Repo2GPT: Python script to summarize local and GitHub projects into a doc form usable for LLM-assisted programming and code review</li>
-          <li>SREF Seed Vault: Midjourney v6 Style Reference Seed # Catalog with image examples and tags</li>
-        </ul>
+        <div>
+          <Card
+            title="Repo2GPT"
+            content="Python script to summarize local and GitHub projects into a doc form usable for LLM-assisted programming and code review"
+          />
+          <Card
+            title="SREF Seed Vault"
+            content="Midjourney v6 Style Reference Seed # Catalog with image examples and tags"
+          />
+        </div>
       )
     },
     {
@@ -76,7 +82,7 @@ const HomeSection = () => {
       <h1 className="text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
         Welcome to My Portfolio
       </h1>
-      <div className="card-container">
+      <div className="card-container-home">
         {cards.map((card, index) => (
           <Card key={index} title={card.title} content={card.content} />
         ))}
