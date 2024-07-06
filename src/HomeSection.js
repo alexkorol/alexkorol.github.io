@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 const HomeSection = () => {
   const cards = [
@@ -57,13 +57,13 @@ const HomeSection = () => {
       title: 'Get in Touch', 
       content: (
         <div>
-          <a href="https://www.linkedin.com/in/alexei-korol/" target="_blank" rel="noopener noreferrer" className="text-blue-500 dark:text-blue-300 hover:underline">
-            <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
+          <a href="https://www.linkedin.com/in/alexei-korol/" target="_blank" rel="noopener noreferrer" className="get-in-touch-button" style={{ marginRight: '1rem' }}>
+            <FontAwesomeIcon icon={faLinkedin} /> LinkedIn <FontAwesomeIcon icon={faExternalLinkAlt} className="external-link-icon" />
           </a>
-          <a href="https://github.com/alexkorol" target="_blank" rel="noopener noreferrer" className="text-blue-500 dark:text-blue-300 hover:underline">
-            <FontAwesomeIcon icon={faGithub} /> GitHub
+          <a href="https://github.com/alexkorol" target="_blank" rel="noopener noreferrer" className="get-in-touch-button">
+            <FontAwesomeIcon icon={faGithub} /> GitHub <FontAwesomeIcon icon={faExternalLinkAlt} className="external-link-icon" />
           </a>
-          <a href="mailto:korolalexei@gmail.com" className="text-blue-500 dark:text-blue-300 hover:underline">
+          <a href="mailto:korolalexei@gmail.com" className="get-in-touch-button">
             <FontAwesomeIcon icon={faEnvelope} /> Email
           </a>
         </div>

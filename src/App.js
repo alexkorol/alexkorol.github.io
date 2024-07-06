@@ -35,8 +35,8 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <nav className="navbar sticky top-0 z-10">
-        <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+      <nav className="navbar sticky top-0 z-10 w-full">
+        <div className="container mx-auto flex justify-between items-center">
           <div className="flex space-x-4">
             {navItems.map((item) => (
               <button
@@ -52,7 +52,7 @@ function App() {
                   }
                 }}
               >
-                {item} {item === 'SREF Vault' && <span>↗</span>}
+                {item} {item === 'SREF Vault' && <span> ↗</span>}
               </button>
             ))}
           </div>
