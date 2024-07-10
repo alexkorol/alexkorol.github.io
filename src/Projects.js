@@ -1,5 +1,8 @@
 import React from 'react';
 import Card from './Card';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 
 const Projects = () => {
@@ -30,12 +33,18 @@ const Projects = () => {
               <div className="flex flex-col h-full">
                 <img src={project.image} alt={project.title} className="w-full h-auto max-h-48 object-cover mb-4 rounded-t-lg" />
                 <p className="mb-4 flex-grow">{project.description}</p>
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded self-start mt-auto">
-                  View Project
-                </a>
+                {project.githubRepo ? (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="get-in-touch-button" style={{ marginRight: '1rem' }}>
+                    View Project <FontAwesomeIcon icon={faExternalLinkAlt} className="external-link-icon" />
+                  </a>
+                ) : (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="get-in-touch-button">
+                    GitHub <FontAwesomeIcon icon={faExternalLinkAlt} className="external-link-icon" />
+                  </a>
+                )}
                 {project.githubRepo && (
-                  <a href={project.githubRepo} target="_blank" rel="noopener noreferrer" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded self-start mt-2">
-                    GitHub Repo
+                  <a href={project.githubRepo} target="_blank" rel="noopener noreferrer" className="get-in-touch-button">
+                    <FontAwesomeIcon icon={faGithub} /> GitHub
                   </a>
                 )}
               </div>
