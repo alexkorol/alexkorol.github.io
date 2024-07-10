@@ -82,7 +82,7 @@ const HomeSection = () => {
       <h1 className="text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
         Welcome to My Portfolio
       </h1>
-      <div className="card-container-home">
+      <div className="card-container-home grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {cards.map((card, index) => (
           <Card key={index} title={card.title} content={card.content} />
         ))}

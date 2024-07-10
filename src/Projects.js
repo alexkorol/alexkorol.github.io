@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './Card';
 
+
 const Projects = () => {
   const projects = [
     {
@@ -18,23 +19,25 @@ const Projects = () => {
   ];
 
   return (
-    <div className="card-container-projects">
-      {projects.map((project, index) => (
-        <Card key={index} title={project.title} content={
-          <div className="flex flex-col h-full">
-            <img src={project.image} alt={`${project.title} screenshot`} className="w-full h-48 object-cover mb-4
-rounded-t-lg" />
-            <p className="mb-4 flex-grow">{project.description}</p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className="bg-blue-500 hover:bg-blue-700
-text-white font-bold py-2 px-4 rounded self-start mt-auto">
-              View Project
-            </a>
-          </div>
-        } className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col
-h-full" />
-      ))}
-    </div>
-  );
-};
-
-export default Projects;
+      <div>
+        <h1 className="text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+          My Projects
+        </h1>
+        <div className="card-container-projects grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project, index) => (
+            <Card key={index} title={project.title} content={
+              <div className="flex flex-col h-full">
+                <img src={project.image} alt={project.title} className="w-full h-48 object-cover mb-4 rounded-t-lg" />
+                <p className="mb-4 flex-grow">{project.description}</p>
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded self-start mt-auto">
+                  View Project
+                </a>
+              </div>
+            } className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full" />
+          ))}
+        </div>
+      </div>
+    );
+  };
+  
+  export default Projects;

@@ -4,13 +4,18 @@ import AIArtSection from './AIArtSection';
 import Projects from './Projects';
 import HomeSection from './HomeSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faProjectDiagram, faPalette, faArchive, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [darkMode, setDarkMode] = useState(false);
 
-  const navItems = ['Home', 'Projects', 'AI Art', 'SREF Vault'];
+  const navItems = [
+    { name: 'Home', icon: faHome },
+    { name: 'Projects', icon: faProjectDiagram },
+    { name: 'AI Art', icon: faPalette },
+    { name: 'SREF Vault', icon: faArchive, link: 'https://alexkorol.github.io/seedvault' }
+  ];
 
   useEffect(() => {
     if (darkMode) {
@@ -33,35 +38,36 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <nav className="navbar sticky top-0 z-10 w-full">
-        <div className="container mx-auto max-w-screen-lg flex justify-between items-center navbar-container">
-          <div className="flex space-x-4">
-            {navItems.map((item) => (
-              <button
-                key={item}
-                className={`navbar-button ${
-                  activeSection === item.toLowerCase() ? 'active' : ''
-                }`}
-                onClick={() => {
-                  if (item === 'SREF Vault') {
-                    window.open('https://alexkorol.github.io/seedvault', '_blank');
-                  } else {
-                    setActiveSection(item.toLowerCase());
-                  }
-                }}
-              >
-                {item} {item === 'SREF Vault' && <span> ↗</span>}
-              </button>
-            ))}
-          </div>
-          <button
-            className="navbar-button"
-            onClick={() => setDarkMode(!darkMode)}
-          >
-            <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
-          </button>
-        </div>
-      </nav>
+<nav className="navbar">
+  <div className="navbar-container">
+    <div className="navbar-items">
+      {navItems.map((item) => (
+        <button
+          key={item.name}
+          className={`navbar-button ${
+            activeSection === item.name.toLowerCase() ? 'active' : ''
+          }`}
+          onClick={() => {
+            if (item.link) {
+              window.open(item.link, '_blank');
+            } else {
+              setActiveSection(item.name.toLowerCase());
+            }
+          }}
+        >
+          <FontAwesomeIcon icon={item.icon} className="mr-2" />
+          {item.name} {item.link && <span>↗</span>}
+        </button>
+      ))}
+    </div>
+    <button
+      className="navbar-button"
+      onClick={() => setDarkMode(!darkMode)}
+    >
+      <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
+    </button>
+  </div>
+</nav>
 
       <main className="container mx-auto px-6 py-16">
         {renderSection(activeSection)}
