@@ -31,3 +31,4 @@ yarn-error.log*
 .aider.tags.cache.v3
 directive.md
 example.js
+suggestions.txt

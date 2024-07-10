@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Card from './Card';
 import AIArtSection from './AIArtSection';
 import Projects from './Projects';
 import HomeSection from './HomeSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -36,7 +34,7 @@ function App() {
   return (
     <div className="min-h-screen">
       <nav className="navbar sticky top-0 z-10 w-full">
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="container mx-auto max-w-screen-lg flex justify-between items-center navbar-container">
           <div className="flex space-x-4">
             {navItems.map((item) => (
               <button

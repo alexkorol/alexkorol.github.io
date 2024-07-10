@@ -8,10 +8,14 @@ const AIArtSection = () => {
   const timelineRef = useRef(null);
 
   const timelineItems = [
-    { year: '2024', title: 'Future AI', description: 'Exploring the potential of AI in 2024', imageSrc: '/path/to/art/2024.jpg' },
-    { year: '2023', title: 'AI Revolution', description: 'The year AI became mainstream', imageSrc: '/path/to/art/2023.jpg' },
-    { year: '2022', title: 'AI Breakthroughs', description: 'Major advancements in AI technology', imageSrc: '/path/to/art/2022.jpg' },
-    { year: '2021', title: 'Early AI Art', description: 'The beginning of AI-generated art', imageSrc: '/path/to/art/2021.jpg' },
+    { year: '2024', title: 'Future AI', description: 'Exploring the potential of AI in 2024', imageSrc:
+'/api/placeholder/1200/675?text=Future AI 2024' },
+    { year: '2023', title: 'AI Revolution', description: 'The year AI became mainstream', imageSrc:
+'/api/placeholder/1200/675?text=AI Revolution 2023' },
+    { year: '2022', title: 'AI Breakthroughs', description: 'Major advancements in AI technology', imageSrc:
+'/api/placeholder/1200/675?text=AI Breakthroughs 2022' },
+    { year: '2021', title: 'Early AI Art', description: 'The beginning of AI-generated art', imageSrc:
+'/api/placeholder/1200/675?text=Early AI Art 2021' },
   ];
 
   useEffect(() => {
@@ -20,13 +24,19 @@ const AIArtSection = () => {
 
     gsap.set(items, { opacity: 0, y: 100 });
 
-    ScrollTrigger.batch(items, {
-      onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, stagger: 0.15, overwrite: true }),
-      onLeave: batch => gsap.set(batch, { opacity: 0, y: -100, overwrite: true }),
-      onEnterBack: batch => gsap.to(batch, { opacity: 1, y: 0, stagger: 0.15, overwrite: true }),
-      onLeaveBack: batch => gsap.set(batch, { opacity: 0, y: 100, overwrite: true }),
-      start: "top 80%",
-      end: "bottom 20%",
+    items.forEach((item, index) => {
+      gsap.from(item, {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse',
+        }
+      });
     });
 
     gsap.to('.timeline::before', {
@@ -44,30 +54,31 @@ const AIArtSection = () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
-
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">AI Art Timeline</h1>
-      <div ref={timelineRef} className="timeline relative">
+    <div className="container mx-auto px-6 py-16">
+      <h1 className="text-3xl font-bold text-center mb-8">AI Art Timeline</h1>
+      <div className="timeline" ref={timelineRef}>
         {timelineItems.map((item, index) => (
-          <div key={item.year} className="timeline-item flex mb-20">
-            <div className="timeline-content w-full md:w-10/12 mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl">
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="carousel relative w-full md:w-1/2 pb-9/16 mb-6 md:mb-0 md:mr-8 overflow-hidden rounded-lg">
-                  <img src={item.imageSrc} alt={item.title} className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
+          <div className="timeline-item" key={index}>
+            <div className="timeline-content">
+              <div className="carousel">
+                <div className="carousel-inner">
+                  <div className="carousel-item">
+                    <img src={item.imageSrc} alt={item.title} />
+                  </div>
                 </div>
-                <div className="timeline-text md:w-1/2">
-                  <div className="date text-blue-500 font-bold mb-3 text-lg">{item.year}</div>
-                  <h2 className="text-2xl font-semibold mb-3 text-gray-800 dark:text-gray-200">{item.title}</h2>
-                  <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">{item.description}</p>
-                </div>
+              </div>
+              <div className="timeline-text">
+                <div className="date">{item.year}</div>
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
               </div>
             </div>
           </div>
         ))}
       </div>
     </div>
-  );
+  );  
 };
 
 export default AIArtSection;

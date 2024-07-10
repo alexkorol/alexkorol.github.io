@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from './Card';
 
-
 const Projects = () => {
   const projects = [
     {
@@ -23,16 +22,19 @@ const Projects = () => {
       {projects.map((project, index) => (
         <Card key={index} title={project.title} content={
           <div className="flex flex-col h-full">
-            <img src={project.image} alt={project.title} className="w-full h-48 object-cover mb-4 rounded-t-lg" />
+            <img src={project.image} alt={`${project.title} screenshot`} className="w-full h-48 object-cover mb-4
+rounded-t-lg" />
             <p className="mb-4 flex-grow">{project.description}</p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded self-start mt-auto">
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="bg-blue-500 hover:bg-blue-700
+text-white font-bold py-2 px-4 rounded self-start mt-auto">
               View Project
             </a>
           </div>
-        } className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full" />
+        } className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col
+h-full" />
       ))}
     </div>
   );
 };
-  
+
 export default Projects;
