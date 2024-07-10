@@ -37,7 +37,7 @@ body.dark {
 .navbar {
   background-color: var(--navbar-bg-light);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -355,113 +355,9 @@ h1 {
   }
 }
 
-.timeline {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  height: 100%;
-  width: 2px;
-  background: linear-gradient(to bottom, #000 50%, #fff 50%);
-  background-size: 100% 20px;
-  background-image: repeating-linear-gradient(to bottom, #000 0, #000 10px, #fff 10px, #fff 20px);
-}
-
-.dark .timeline::before {
-  background: linear-gradient(to bottom, var(--text-color-dark) 50%, var(--bg-color-dark) 50%);
-  background-size: 100% 20px;
-  background-image: repeating-linear-gradient(to bottom, var(--text-color-dark) 0, var(--text-color-dark) 10px, var(--bg-color-dark) 10px, var(--bg-color-dark) 20px);
-}
-
-.timeline-item {
-  padding: 10px 40px;
-  position: relative;
-  background-color: inherit;
-  width: 50%;
-}
-
-.timeline-item::after {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  right: -17px;
-  background-color: white;
-  border: 4px solid var(--link-color-light);
-  top: 15px;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.timeline-content {
-  padding: 20px 30px;
-  background-color: white;
-  position: relative;
-  border-radius: 6px;
-}
-
-.timeline-item:nth-child(odd) {
-  left: 0;
-}
-
-.timeline-item:nth-child(even) {
-  left: 50%;
-}
-
-.timeline-item:nth-child(odd)::after {
-  right: -16px;
-}
-
-.timeline-item:nth-child(even)::after {
-  left: -14px;
-}
-
-.timeline-content {
-  padding: 20px 30px;
-  background-color: white;
-  position: relative;
-  border-radius: 6px;
-  box-shadow: var(--card-shadow-light);
-}
-
-.timeline-content:hover {
-  box-shadow: var(--card-hover-shadow-light);
-}
-
-.timeline-text {
-  background-color: var(--card-bg-light);
-  border-radius: 0.5rem;
-  box-shadow: var(--card-shadow-light);
-  padding: 1rem;
-  transition: all 0.3s ease;
-}
-
-.timeline-text:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--card-hover-shadow-light);
-}
-
-.timeline-text .date {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--link-color-light);
-}
-
-.timeline-text h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--text-color-light);
-}
-
-.timeline-text p {
-  font-size: 1rem;
-  color: var(--text-color-light);
+/* Ensure images are responsive and fit within the card */
+.card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
