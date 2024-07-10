@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './Card';
 
+
 const Projects = () => {
   const projects = [
     {
@@ -18,7 +19,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="pt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+    <div className="card-container-projects">
       {projects.map((project, index) => (
         <Card key={index} title={project.title} content={
           <div className="flex flex-col h-full">
@@ -33,5 +34,5 @@ const Projects = () => {
     </div>
   );
 };
-
+  
 export default Projects;
