@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Timeline.css';
@@ -7,48 +7,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AIArtSection = () => {
   const timelineRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState({});
 
   const timelineItems = [
-    {
-      year: '2024',
-      title: 'Future AI',
-      description: 'Exploring the potential of AI in 2024',
-      images: [
-        '/api/placeholder/1920/1080?text=Future AI 2024 1',
-        '/api/placeholder/1920/1080?text=Future AI 2024 2',
-        '/api/placeholder/1920/1080?text=Future AI 2024 3',
-      ],
-    },
-    {
-      year: '2023',
-      title: 'AI Revolution',
-      description: 'The year AI became mainstream',
-      images: [
-        '/api/placeholder/1920/1080?text=AI Revolution 2023 1',
-        '/api/placeholder/1920/1080?text=AI Revolution 2023 2',
-        '/api/placeholder/1920/1080?text=AI Revolution 2023 3',
-      ],
-    },
-    {
-      year: '2022',
-      title: 'AI Breakthroughs',
-      description: 'Major advancements in AI technology',
-      images: [
-        '/api/placeholder/1920/1080?text=AI Breakthroughs 2022 1',
-        '/api/placeholder/1920/1080?text=AI Breakthroughs 2022 2',
-        '/api/placeholder/1920/1080?text=AI Breakthroughs 2022 3',
-      ],
-    },
-    {
-      year: '2021',
-      title: 'Early AI Art',
-      description: 'The beginning of AI-generated art',
-      images: [
-        '/api/placeholder/1920/1080?text=Early AI Art 2021 1',
-        '/api/placeholder/1920/1080?text=Early AI Art 2021 2',
-        '/api/placeholder/1920/1080?text=Early AI Art 2021 3',
-      ],
-    },
+    { date: 'Sept 2023', title: 'DALL-E 3', images: ['dalle3_1.jpg', 'dalle3_2.jpg'] },
+    { date: 'Jul 2022', title: 'Pixel Art Diffusion', images: ['pixelart_diffusion_ 1.png', 'pixelart_diffusion_ 2.png', 'pixelart_diffusion_ 3.png'] },
+    { date: 'Jun 2022', title: 'txt2image_v5', images: ['txt2image_v5_ 1.png', 'txt2image_v5_ 2.png', 'txt2image_v5_ 3.png', 'txt2image_v5_ 4.png', 'txt2image_v5_ 5.png'] },
+    { date: 'Feb 2022', title: 'Fungoid Diffusion', images: ['fungoid_ 1.png', 'fungoid_ 2.png', 'fungoid_ 3.png', 'fungoid_ 4.png', 'fungoid_ 5.png', 'fungoid_ 6.png'] },
+    { date: 'Dec 2021', title: '360 Diffusion', images: ['360_ 1.jpg', '360_ 2.jpg', '360_ 3.jpg', '360_ 4.jpg'] },
+    { date: 'Aug 2021', title: 'Artflow', images: ['artflow_1.png', 'artflow_2.png', 'artflow_3.png'] },
   ];
 
   useEffect(() => {
@@ -58,7 +25,11 @@ const AIArtSection = () => {
     gsap.set(items, { opacity: 0, y: 100 });
 
     items.forEach((item, index) => {
-      const tl = gsap.timeline({
+      gsap.to(item, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
         scrollTrigger: {
           trigger: item,
           start: 'top 80%',
@@ -66,24 +37,6 @@ const AIArtSection = () => {
           toggleActions: 'play none none reverse',
         }
       });
-
-      tl.to(item, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-      });
-
-      const carousel = item.querySelector('.carousel');
-      const images = carousel.querySelectorAll('img');
-
-      tl.to(images, {
-        xPercent: -100 * (images.length - 1),
-        ease: 'none',
-        duration: 10,
-        repeat: -1,
-        yoyo: true,
-      }, '-=0.5');
     });
 
     gsap.to('.timeline::before', {
@@ -102,29 +55,44 @@ const AIArtSection = () => {
     };
   }, []);
 
+  const nextSlide = (index) => {
+    setCurrentSlide(prev => ({
+      ...prev,
+      [index]: (prev[index] + 1) % timelineItems[index].images.length
+    }));
+  };
+
+  const prevSlide = (index) => {
+    setCurrentSlide(prev => ({
+      ...prev,
+      [index]: (prev[index] - 1 + timelineItems[index].images.length) % timelineItems[index].images.length
+    }));
+  };
+
   return (
-    <div className="container mx-auto px-6 py-16">
+    <div className="container mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold text-center mb-12 text-blue-600">AI Art Timeline</h1>
       <div className="timeline relative" ref={timelineRef}>
-        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-blue-500" />
+        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-blue-500 hidden md:block" />
         {timelineItems.map((item, index) => (
-          <div className={`timeline-item flex justify-center items-center mb-32 ${index % 2 === 0 ? '' : 'flex-row-reverse'}`} key={index}>
-            <div className={`timeline-content flex items-center w-4/5 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-              <div className="carousel w-3/4 relative pb-[56.25%] rounded-lg overflow-hidden shadow-xl">
+          <div className={`timeline-item flex flex-col md:flex-row justify-center items-center mb-16 md:mb-32 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`} key={index}>
+            <div className={`timeline-content flex flex-col md:flex-row items-center w-full ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'}`}>
+              <div className={`carousel w-full md:w-3/4 relative rounded-lg overflow-hidden shadow-xl mb-4 md:mb-0 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
                 {item.images.map((image, imgIndex) => (
                   <img
                     key={imgIndex}
-                    src={image}
+                    src={`/images/aiart/${image}`}
                     alt={`${item.title} ${imgIndex + 1}`}
-                    className="absolute top-0 left-0 w-full h-full object-cover"
-                    style={{ left: `${imgIndex * 100}%` }}
+                    className={`w-full h-full object-contain transition-opacity duration-500 ${imgIndex === (currentSlide[index] || 0) ? 'opacity-100' : 'opacity-0'}`}
                   />
                 ))}
+                <button onClick={() => prevSlide(index)} className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10 hover:bg-opacity-75">{'<'}</button>
+                <button onClick={() => nextSlide(index)} className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10 hover:bg-opacity-75">{'>'}</button>
               </div>
-              <div className={`timeline-text w-1/4 bg-white bg-opacity-80 backdrop-blur-md rounded-lg p-4 shadow-lg ${index % 2 === 0 ? '-ml-12 z-10' : '-mr-12 z-10'}`}>
-                <div className="date text-lg font-bold text-blue-500 mb-2">{item.year}</div>
+              <div className={`timeline-text w-full md:w-1/4 bg-white bg-opacity-80 backdrop-blur-md rounded-lg p-4 shadow-lg ${index % 2 === 0 ? 'md:order-2 md:-ml-8' : 'md:order-1 md:-mr-8'} z-10`}>
+                <div className="date text-lg font-bold text-blue-500 mb-2">{item.date}</div>
                 <h2 className="text-xl font-semibold mb-2 text-gray-800">{item.title}</h2>
-                <p className="text-sm text-gray-600">{item.description}</p>
+                <p className="text-sm text-gray-600">Description of {item.title} images.</p>
               </div>
             </div>
           </div>

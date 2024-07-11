@@ -1,0 +1,24 @@
+aiart
+    360_ 1.jpg
+    360_ 2.jpg
+    360_ 3.jpg
+    360_ 4.jpg
+    artflow_1.png
+    artflow_2.png
+    artflow_3.png
+    dalle3_1.jpg
+    dalle3_2.jpg
+    fungoid_ 1.png
+    fungoid_ 2.png
+    fungoid_ 3.png
+    fungoid_ 4.png
+    fungoid_ 5.png
+    fungoid_ 6.png
+    pixelart_diffusion_ 1.png
+    pixelart_diffusion_ 2.png
+    pixelart_diffusion_ 3.png
+    txt2image_v5_ 1.png
+    txt2image_v5_ 2.png
+    txt2image_v5_ 3.png
+    txt2image_v5_ 4.png
+    txt2image_v5_ 5.png

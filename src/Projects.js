@@ -1,8 +1,8 @@
 import React from 'react';
-import Card from './Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import Card from './Card';
 
 
 const Projects = () => {
