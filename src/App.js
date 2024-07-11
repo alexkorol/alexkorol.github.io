@@ -41,31 +41,36 @@ function App() {
 <nav className="navbar">
   <div className="navbar-container">
     <div className="navbar-items">
-      {navItems.map((item) => (
+      <div className="main-nav-items">
+        {navItems.map((item) => (
+          <button
+            key={item.name}
+            className={`navbar-button ${
+              activeSection === item.name.toLowerCase() ? 'active' : ''
+            }`}
+            onClick={() => {
+              if (item.link) {
+                window.open(item.link, '_blank');
+              } else {
+                setActiveSection(item.name.toLowerCase());
+              }
+            }}
+            data-name={item.name}
+          >
+            <FontAwesomeIcon icon={item.icon} className="mr-2" />
+            {item.name} {item.link && <span>↗</span>}
+          </button>
+        ))}
+      </div>
+      <div className="utility-nav-items">
         <button
-          key={item.name}
-          className={`navbar-button ${
-            activeSection === item.name.toLowerCase() ? 'active' : ''
-          }`}
-          onClick={() => {
-            if (item.link) {
-              window.open(item.link, '_blank');
-            } else {
-              setActiveSection(item.name.toLowerCase());
-            }
-          }}
+          className="navbar-button"
+          onClick={() => setDarkMode(!darkMode)}
         >
-          <FontAwesomeIcon icon={item.icon} className="mr-2" />
-          {item.name} {item.link && <span>↗</span>}
+          <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
         </button>
-      ))}
+      </div>
     </div>
-    <button
-      className="navbar-button"
-      onClick={() => setDarkMode(!darkMode)}
-    >
-      <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
-    </button>
   </div>
 </nav>
 
