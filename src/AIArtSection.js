@@ -7,8 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AIArtSection = () => {
   const timelineRef = useRef(null);
-  const [currentSlide, setCurrentSlide] = useState({});
-
   const timelineItems = [
     { date: 'Sept 2023', title: 'DALL-E 3', images: ['dalle3_1.jpg', 'dalle3_2.jpg'] },
     { date: 'Jul 2022', title: 'Pixel Art Diffusion', images: ['pixelart_diffusion_ 1.png', 'pixelart_diffusion_ 2.png', 'pixelart_diffusion_ 3.png'] },
@@ -17,6 +15,25 @@ const AIArtSection = () => {
     { date: 'Dec 2021', title: '360 Diffusion', images: ['360_ 1.jpg', '360_ 2.jpg', '360_ 3.jpg', '360_ 4.jpg'] },
     { date: 'Aug 2021', title: 'Artflow', images: ['artflow_1.png', 'artflow_2.png', 'artflow_3.png'] },
   ];
+
+  const [currentSlide, setCurrentSlide] = useState(timelineItems.reduce((acc, _, index) => {
+    acc[index] = 0;
+    return acc;
+  }, {}));
+
+  const handlePrevSlide = (index) => {
+    setCurrentSlide((prev) => ({
+      ...prev,
+      [index]: (prev[index] - 1 + timelineItems[index].images.length) % timelineItems[index].images.length,
+    }));
+  };
+
+  const handleNextSlide = (index) => {
+    setCurrentSlide((prev) => ({
+      ...prev,
+      [index]: (prev[index] + 1) % timelineItems[index].images.length,
+    }));
+  };
 
   useEffect(() => {
     const timeline = timelineRef.current;
@@ -55,20 +72,6 @@ const AIArtSection = () => {
     };
   }, []);
 
-  const nextSlide = (index) => {
-    setCurrentSlide(prev => ({
-      ...prev,
-      [index]: (prev[index] + 1) % timelineItems[index].images.length
-    }));
-  };
-
-  const prevSlide = (index) => {
-    setCurrentSlide(prev => ({
-      ...prev,
-      [index]: (prev[index] - 1 + timelineItems[index].images.length) % timelineItems[index].images.length
-    }));
-  };
-
   return (
     <div className="container mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold text-center mb-12 text-blue-600">AI Art Timeline</h1>
@@ -77,17 +80,17 @@ const AIArtSection = () => {
         {timelineItems.map((item, index) => (
           <div className={`timeline-item flex flex-col md:flex-row justify-center items-center mb-16 md:mb-32 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`} key={index}>
             <div className={`timeline-content flex flex-col md:flex-row items-center w-full ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'}`}>
-              <div className={`carousel w-full md:w-3/4 relative rounded-lg overflow-hidden shadow-xl mb-4 md:mb-0 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
+              <div className={`carousel w-full md:w-3/4 relative rounded-lg overflow-hidden shadow-xl mb-4 md:mb-0 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`} style={{ minHeight: '300px' }}>
                 {item.images.map((image, imgIndex) => (
                   <img
                     key={imgIndex}
                     src={`/images/aiart/${image}`}
                     alt={`${item.title} ${imgIndex + 1}`}
-                    className={`w-full h-full object-contain transition-opacity duration-500 ${imgIndex === (currentSlide[index] || 0) ? 'opacity-100' : 'opacity-0'}`}
+                    className={`w-full h-full object-contain transition-opacity duration-500 ${imgIndex === currentSlide[index] ? 'opacity-100' : 'opacity-0'}`}
                   />
                 ))}
-                <button onClick={() => prevSlide(index)} className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10 hover:bg-opacity-75">{'<'}</button>
-                <button onClick={() => nextSlide(index)} className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10 hover:bg-opacity-75">{'>'}</button>
+                <button onClick={() => handlePrevSlide(index)} className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10 hover:bg-opacity-75">{'<'}</button>
+                <button onClick={() => handleNextSlide(index)} className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10 hover:bg-opacity-75">{'>'}</button>
               </div>
               <div className={`timeline-text w-full md:w-1/4 bg-white bg-opacity-80 backdrop-blur-md rounded-lg p-4 shadow-lg ${index % 2 === 0 ? 'md:order-2 md:-ml-8' : 'md:order-1 md:-mr-8'} z-10`}>
                 <div className="date text-lg font-bold text-blue-500 mb-2">{item.date}</div>
