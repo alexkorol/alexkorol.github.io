@@ -89,14 +89,18 @@
   .timeline-text {
     width: 25%;
     margin-top: 0;
+    position: absolute;
+    bottom: -2rem;
   }
 
   .timeline-item:nth-child(odd) .timeline-text {
-    margin-left: -2rem;
+    right: 0;
+    margin-right: -2rem;
   }
 
   .timeline-item:nth-child(even) .timeline-text {
-    margin-right: -2rem;
+    left: 0;
+    margin-left: -2rem;
   }
 }
 
@@ -124,6 +128,21 @@
   color: var(--text-color-light);
 }
 
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
 .carousel button {
   font-size: 1.5rem;
   width: 40px;
@@ -139,7 +158,7 @@
   color: white;
   border: none;
   cursor: pointer;
-  z-index: 10;
+  z-index: 20;
 }
 
 .carousel button:hover {

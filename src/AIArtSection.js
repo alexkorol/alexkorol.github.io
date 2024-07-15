@@ -16,20 +16,20 @@ const AIArtSection = () => {
     { date: 'Aug 2021', title: 'Artflow', images: ['artflow_1.png', 'artflow_2.png', 'artflow_3.png'] },
   ];
 
-  const [currentSlide, setCurrentSlide] = useState(timelineItems.reduce((acc, _, index) => {
+  const [currentSlides, setCurrentSlides] = useState(timelineItems.reduce((acc, _, index) => {
     acc[index] = 0;
     return acc;
   }, {}));
 
   const handlePrevSlide = (index) => {
-    setCurrentSlide((prev) => ({
+    setCurrentSlides((prev) => ({
       ...prev,
       [index]: (prev[index] - 1 + timelineItems[index].images.length) % timelineItems[index].images.length,
     }));
   };
 
   const handleNextSlide = (index) => {
-    setCurrentSlide((prev) => ({
+    setCurrentSlides((prev) => ({
       ...prev,
       [index]: (prev[index] + 1) % timelineItems[index].images.length,
     }));
@@ -86,11 +86,15 @@ const AIArtSection = () => {
                     key={imgIndex}
                     src={`/images/aiart/${image}`}
                     alt={`${item.title} ${imgIndex + 1}`}
-                    className={`w-full h-full object-contain transition-opacity duration-500 ${imgIndex === currentSlide[index] ? 'opacity-100' : 'opacity-0'}`}
+                    className={`w-full h-full object-contain absolute top-0 left-0 transition-opacity duration-500 ${imgIndex === currentSlides[index] ? 'opacity-100' : 'opacity-0'}`}
+                    style={{
+                      transform: `translateX(${(imgIndex - currentSlides[index]) * 100}%)`,
+                      transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out',
+                    }}
                   />
                 ))}
-                <button onClick={() => handlePrevSlide(index)} className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10 hover:bg-opacity-75">{'<'}</button>
-                <button onClick={() => handleNextSlide(index)} className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10 hover:bg-opacity-75">{'>'}</button>
+                <button onClick={() => handlePrevSlide(index)} className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-20 hover:bg-opacity-75">{'<'}</button>
+                <button onClick={() => handleNextSlide(index)} className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-20 hover:bg-opacity-75">{'>'}</button>
               </div>
               <div className={`timeline-text w-full md:w-1/4 bg-white bg-opacity-80 backdrop-blur-md rounded-lg p-4 shadow-lg ${index % 2 === 0 ? 'md:order-2 md:-ml-8' : 'md:order-1 md:-mr-8'} z-10`}>
                 <div className="date text-lg font-bold text-blue-500 mb-2">{item.date}</div>
