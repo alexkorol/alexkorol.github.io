@@ -70,6 +70,11 @@
   position: absolute;
   top: 0;
   left: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel img:not(.active) {
+  opacity: 0.5;
 }
 
 .timeline-text {

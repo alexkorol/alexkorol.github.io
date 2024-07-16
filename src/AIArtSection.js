@@ -86,7 +86,7 @@ const AIArtSection = () => {
                     key={imgIndex}
                     src={`/images/aiart/${image}`}
                     alt={`${item.title} ${imgIndex + 1}`}
-                    className={`w-full h-full object-contain absolute top-0 left-0 transition-opacity duration-500 ${imgIndex === currentSlides[index] ? 'opacity-100' : 'opacity-0'}`}
+                    className={`w-full h-full object-contain absolute top-0 left-0 transition-opacity duration-500 ${imgIndex === currentSlides[index] ? 'opacity-100 active' : 'opacity-0'}`}
                     style={{
                       transform: `translateX(${(imgIndex - currentSlides[index]) * 100}%)`,
                       transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out',
