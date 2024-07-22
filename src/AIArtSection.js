@@ -99,7 +99,7 @@ const AIArtSection = () => {
               <div className={`timeline-text w-full md:w-1/4 bg-white bg-opacity-80 backdrop-blur-md rounded-lg p-4 shadow-lg ${index % 2 === 0 ? 'md:order-2 md:-ml-8' : 'md:order-1 md:-mr-8'} z-10`}>
                 <div className="date text-lg font-bold text-blue-500 mb-2">{item.date}</div>
                 <h2 className="text-xl font-semibold mb-2 text-gray-800">{item.title}</h2>
-                <p className="text-sm text-gray-600">Description of {item.title} images.</p>
+                <p className="text-sm text-gray-600">Unique Fungoid Diffusion images, showcasing organic and abstract fungus-inspired forms.</p>
               </div>
             </div>
           </div>
