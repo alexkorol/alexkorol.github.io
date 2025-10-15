@@ -1,1 +1,477 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="manifest" href="/manifest.json"/><title>React App</title><script defer="defer" src="/static/js/main.52275fd0.js"></script><link href="/static/css/main.989807cc.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alexei Korol · Product-Focused Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Alexei Korol – product-focused engineer building polished, AI-powered web experiences."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-reveal>
+      <div class="container">
+        <a class="brand" href="#top" aria-label="Alexei Korol home">
+          <span class="brand__mark" aria-hidden="true">AK</span>
+          <span class="brand__name">Alexei Korol</span>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <nav class="site-nav" id="site-nav">
+          <ul class="nav-list">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#now">Now</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <button class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span class="theme-toggle__icon" aria-hidden="true"></span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="container">
+          <div class="hero__content" data-reveal>
+            <p class="eyebrow">Product-Focused Software Engineer</p>
+            <h1>Polished experiences with pragmatic AI workflows.</h1>
+            <p class="lede">
+              I'm Alexei Korol, a builder who blends design sensitivity with
+              code craftsmanship. I help teams ship delightful, measurable
+              improvements across the product lifecycle—from ideation and rapid
+              prototypes to production-ready features informed by real-world
+              constraints.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#work">See recent work</a>
+              <a class="btn btn--ghost" href="https://github.com/alexkorol" target="_blank" rel="noreferrer"
+                >Browse GitHub</a
+              >
+            </div>
+            <dl class="hero__stats">
+              <div>
+                <dt>Specialties</dt>
+                <dd>AI-assisted tooling · Full-stack web · Rapid prototyping</dd>
+              </div>
+              <div>
+                <dt>Toolbox</dt>
+                <dd>TypeScript, React, Python, Node, Three.js, Tailwind</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="hero__panel" data-reveal data-reveal-delay="120">
+            <div class="hero__card">
+              <h2>What I deliver</h2>
+              <ul class="hero__list">
+                <li>Human-centered UI polish grounded in analytics</li>
+                <li>LLM-enabled workflows that speed up delivery</li>
+                <li>Systems thinking with clear documentation</li>
+                <li>Strong collaboration with design & product partners</li>
+              </ul>
+              <div class="hero__now">
+                <p class="hero__now-label">Currently exploring</p>
+                <p class="hero__now-item">Responsible AI interfaces · immersive web</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="work">
+        <div class="container">
+          <div class="section__heading" data-reveal>
+            <p class="eyebrow">Selected work</p>
+            <h2>Recent projects worth highlighting</h2>
+            <p>
+              A mix of personal products, open-source experiments, and
+              collaborations that show how I approach shipping polished
+              experiences.
+            </p>
+          </div>
+          <div class="projects-grid">
+            <article class="project-card" data-reveal data-repo="alexkorol/delaford_game">
+              <div class="project-card__content">
+                <h3>Delaford</h3>
+                <p>
+                  A persistent fantasy world built with vanilla JavaScript and
+                  canvas rendering. Guests can explore instantly while signed-in
+                  players enjoy inventory management, quests, and live updates.
+                </p>
+                <ul class="project-card__tags">
+                  <li>Canvas</li>
+                  <li>Node</li>
+                  <li>Game Design</li>
+                </ul>
+              </div>
+              <dl class="project-card__meta">
+                <div>
+                  <dt>Role</dt>
+                  <dd>Solo developer & world builder</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Playable public alpha</dd>
+                </div>
+              </dl>
+              <div class="project-card__links">
+                <a class="project-card__link" href="https://play.delaford.com/?useGuestAccount" target="_blank" rel="noreferrer"
+                  >Launch experience</a
+                >
+                <a class="project-card__link" href="https://github.com/alexkorol/delaford_game" target="_blank" rel="noreferrer"
+                  >View source</a
+                >
+              </div>
+              <footer class="project-card__footer" aria-live="polite">
+                <span class="project-card__stat project-card__stat--stars">★ <span>—</span></span>
+                <span class="project-card__stat project-card__stat--updated">Updated —</span>
+              </footer>
+            </article>
+
+            <article class="project-card" data-reveal data-repo="alexkorol/WIZARD">
+              <div class="project-card__content">
+                <h3>WIZARD</h3>
+                <p>
+                  A zero-lag resource dashboard composed with LLM copilots. It
+                  assembles reusable UI modules and prompt-driven workflows into
+                  a cohesive, high-velocity admin toolkit.
+                </p>
+                <ul class="project-card__tags">
+                  <li>LLM Co-creation</li>
+                  <li>Design Systems</li>
+                  <li>Analytics</li>
+                </ul>
+              </div>
+              <dl class="project-card__meta">
+                <div>
+                  <dt>Role</dt>
+                  <dd>Product designer & front-end</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Live on GitHub Pages</dd>
+                </div>
+              </dl>
+              <div class="project-card__links">
+                <a class="project-card__link" href="https://alexkorol.github.io/WIZARD/" target="_blank" rel="noreferrer"
+                  >View live site</a
+                >
+                <a class="project-card__link" href="https://github.com/alexkorol/WIZARD" target="_blank" rel="noreferrer"
+                  >View source</a
+                >
+              </div>
+              <footer class="project-card__footer" aria-live="polite">
+                <span class="project-card__stat project-card__stat--stars">★ <span>—</span></span>
+                <span class="project-card__stat project-card__stat--updated">Updated —</span>
+              </footer>
+            </article>
+
+            <article class="project-card" data-reveal data-repo="alexkorol/repo2GPT">
+              <div class="project-card__content">
+                <h3>Repo2GPT</h3>
+                <p>
+                  Python tooling that clones any GitHub project, renders a visual
+                  tree diagram, and prepares a code bundle ready for LLM review.
+                  Great for code archaeology and onboarding teammates quickly.
+                </p>
+                <ul class="project-card__tags">
+                  <li>Python</li>
+                  <li>CLI</li>
+                  <li>Developer Experience</li>
+                </ul>
+              </div>
+              <dl class="project-card__meta">
+                <div>
+                  <dt>Role</dt>
+                  <dd>Creator & maintainer</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Open-source</dd>
+                </div>
+              </dl>
+              <div class="project-card__links">
+                <a class="project-card__link" href="https://github.com/alexkorol/repo2GPT" target="_blank" rel="noreferrer"
+                  >View repository</a
+                >
+              </div>
+              <footer class="project-card__footer" aria-live="polite">
+                <span class="project-card__stat project-card__stat--stars">★ <span>—</span></span>
+                <span class="project-card__stat project-card__stat--updated">Updated —</span>
+              </footer>
+            </article>
+
+            <article class="project-card" data-reveal data-repo="alexkorol/pixel-perfecter">
+              <div class="project-card__content">
+                <h3>Pixel Perfecter</h3>
+                <p>
+                  An experimental assistant that compares production UIs with
+                  design comps, highlighting drift and generating actionable QA
+                  reports.
+                </p>
+                <ul class="project-card__tags">
+                  <li>Computer Vision</li>
+                  <li>Automation</li>
+                  <li>Quality</li>
+                </ul>
+              </div>
+              <dl class="project-card__meta">
+                <div>
+                  <dt>Role</dt>
+                  <dd>Prototype engineer</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>In exploration</dd>
+                </div>
+              </dl>
+              <div class="project-card__links">
+                <a class="project-card__link" href="https://github.com/alexkorol/pixel-perfecter" target="_blank" rel="noreferrer"
+                  >View repository</a
+                >
+              </div>
+              <footer class="project-card__footer" aria-live="polite">
+                <span class="project-card__stat project-card__stat--stars">★ <span>—</span></span>
+                <span class="project-card__stat project-card__stat--updated">Updated —</span>
+              </footer>
+            </article>
+
+            <article class="project-card" data-reveal data-repo="alexkorol/mj_showcase_scraper">
+              <div class="project-card__content">
+                <h3>Midjourney Showcase Scraper</h3>
+                <p>
+                  A lightweight browser console script that collects prompt data
+                  from Midjourney's showcase, enabling rapid inspiration boards
+                  and trend reports.
+                </p>
+                <ul class="project-card__tags">
+                  <li>Automation</li>
+                  <li>JavaScript</li>
+                  <li>Creative tooling</li>
+                </ul>
+              </div>
+              <dl class="project-card__meta">
+                <div>
+                  <dt>Role</dt>
+                  <dd>Creator</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>Script utility</dd>
+                </div>
+              </dl>
+              <div class="project-card__links">
+                <a class="project-card__link" href="https://github.com/alexkorol/mj_showcase_scraper" target="_blank" rel="noreferrer"
+                  >View repository</a
+                >
+              </div>
+              <footer class="project-card__footer" aria-live="polite">
+                <span class="project-card__stat project-card__stat--stars">★ <span>—</span></span>
+                <span class="project-card__stat project-card__stat--updated">Updated —</span>
+              </footer>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <div class="container">
+          <div class="section__heading" data-reveal>
+            <p class="eyebrow">Experience</p>
+            <h2>Blending product intuition with engineering rigor</h2>
+            <p>
+              I've worn hats across founding teams, agencies, and enterprise
+              product groups. No matter the environment, I focus on reducing the
+              gap between idea and impact.
+            </p>
+          </div>
+          <div class="timeline" data-reveal>
+            <article class="timeline__item">
+              <div class="timeline__marker" aria-hidden="true"></div>
+              <div class="timeline__body">
+                <header>
+                  <h3>Product Engineering Consultant</h3>
+                  <p class="timeline__meta">Freelance · 2021 — Present</p>
+                </header>
+                <ul>
+                  <li>Partner with founders to ship MVPs and growth experiments.</li>
+                  <li>
+                    Build AI-assisted workflows that cut delivery time while
+                    preserving craft.
+                  </li>
+                  <li>
+                    Coach teams adopting modern front-end tooling and design
+                    systems.
+                  </li>
+                </ul>
+              </div>
+            </article>
+            <article class="timeline__item">
+              <div class="timeline__marker" aria-hidden="true"></div>
+              <div class="timeline__body">
+                <header>
+                  <h3>Lead Front-end Engineer</h3>
+                  <p class="timeline__meta">Agency & Startup Collaborations · 2017 — 2021</p>
+                </header>
+                <ul>
+                  <li>Scaled component libraries supporting multi-brand products.</li>
+                  <li>
+                    Translated complex requirements into maintainable web apps
+                    with strong accessibility foundations.
+                  </li>
+                  <li>Co-led discovery workshops bridging product and design.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="timeline__item">
+              <div class="timeline__marker" aria-hidden="true"></div>
+              <div class="timeline__body">
+                <header>
+                  <h3>Product Designer & Developer</h3>
+                  <p class="timeline__meta">Various creative studios · 2013 — 2017</p>
+                </header>
+                <ul>
+                  <li>Shipped award-winning marketing sites and immersive micros.</li>
+                  <li>
+                    Created interactive installations mixing motion design and
+                    real-time data.
+                  </li>
+                  <li>Introduced design-to-code pipelines using component systems.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="skills">
+        <div class="container">
+          <div class="section__heading" data-reveal>
+            <p class="eyebrow">Capabilities</p>
+            <h2>A balanced mix of strategy, delivery, and craft</h2>
+            <p>
+              I combine hands-on engineering with product sense and facilitation
+              skills to keep cross-functional teams aligned.
+            </p>
+          </div>
+          <div class="skills-grid" data-reveal>
+            <div class="skill-card">
+              <h3>Product Leadership</h3>
+              <ul>
+                <li>Roadmapping & discovery</li>
+                <li>Experiment design & analytics</li>
+                <li>Stakeholder facilitation</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <h3>Front-end Engineering</h3>
+              <ul>
+                <li>TypeScript, React, Next.js</li>
+                <li>Three.js & creative coding</li>
+                <li>Accessibility-first delivery</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <h3>Systems & Ops</h3>
+              <ul>
+                <li>Design systems & tokens</li>
+                <li>CI/CD + automated QA</li>
+                <li>Documentation & knowledge bases</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <h3>AI & Automation</h3>
+              <ul>
+                <li>Prompt design & evaluation</li>
+                <li>GenAI workflow integration</li>
+                <li>Copilot enablement & training</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="now">
+        <div class="container">
+          <div class="section__heading" data-reveal>
+            <p class="eyebrow">Now</p>
+            <h2>What I'm focused on this quarter</h2>
+          </div>
+          <div class="now-grid" data-reveal>
+            <article class="now-card">
+              <h3>Shaping AI-enabled operations</h3>
+              <p>
+                Helping teams prototype copilots that are transparent, reliable,
+                and measurable. I'm especially interested in hybrids of
+                deterministic automation and LLM reasoning.
+              </p>
+            </article>
+            <article class="now-card">
+              <h3>Leveling up immersive web</h3>
+              <p>
+                Experimenting with spatial UI patterns, WebGPU, and high-fidelity
+                animation systems that still perform on the average device.
+              </p>
+            </article>
+            <article class="now-card">
+              <h3>Investing in creative tooling</h3>
+              <p>
+                Building small utilities that unblock artists and strategists,
+                from Midjourney prompt scrapers to repo summarizers for faster
+                creative direction.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="contact">
+        <div class="container">
+          <div class="contact" data-reveal>
+            <div class="contact__content">
+              <p class="eyebrow">Let’s collaborate</p>
+              <h2>Tell me about the product you're shaping.</h2>
+              <p>
+                Ready to move faster with confidence? I'm open to advising,
+                fractional product engineering roles, and ambitious side quests.
+              </p>
+            </div>
+            <div class="contact__actions">
+              <a class="btn btn--primary" href="mailto:hello@alexkorol.dev">Start a conversation</a>
+              <a class="btn btn--ghost" href="https://github.com/alexkorol" target="_blank" rel="noreferrer"
+                >GitHub</a
+              >
+              <a class="btn btn--ghost" href="https://www.linkedin.com/in/alexei-korol/" target="_blank" rel="noreferrer"
+                >LinkedIn</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Alexei Korol. Crafted with curiosity and care.</p>
+        <a class="back-to-top" href="#top">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>
