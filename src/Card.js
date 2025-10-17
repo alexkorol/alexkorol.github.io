@@ -1,11 +1,19 @@
 import React from 'react';
 
-const Card = ({ title, content }) => {
+const Card = ({ title, content, className = '' }) => {
+  const renderContent = () => {
+    if (typeof content === 'string') {
+      return <p>{content}</p>;
+    }
+
+    return content;
+  };
+
   return (
-    <div className="card border rounded-lg p-4 shadow-md">
-      <h2 className="text-xl font-semibold mb-2">{title}</h2>
-      <div className="card-content">
-        <p>{content}</p>
+    <div className={`card ${className}`}>
+      <h2 className="card-title text-xl font-semibold mb-3">{title}</h2>
+      <div className="card-content text-base leading-relaxed">
+        {renderContent()}
       </div>
     </div>
   );
