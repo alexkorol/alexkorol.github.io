@@ -99,7 +99,7 @@ const HomeSection = () => {
   ];
 
   return (
-    <section className="home-section">
+    <section id="home" data-section="home" className="home-section">
       <div className="hero">
         <span className="eyebrow">Alexei Korol • AI Engineer &amp; Builder</span>
         <h1 className="hero-title">Designing smarter products with Generative AI, code, and curiosity.</h1>
@@ -120,6 +120,10 @@ const HomeSection = () => {
         heading="Visual Generative AI Timeline"
         intro="A quick preview of the systems and styles I have iterated on."
         cta={(
+          <a
+            className="timeline-link"
+            href="#ai-art"
+          >
           <Link className="timeline-link" to="/ai-art/timeline">
             View the full AI art story
           </Link>

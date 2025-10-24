@@ -20,6 +20,16 @@ const Projects = () => {
   };
 
   return (
+    <section id="projects" data-section="projects">
+      <h1 className="text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+        My Projects
+      </h1>
+      <div className="card-container-projects grid grid-cols-1 md:grid-cols-2 gap-6">
+        {projects.map((project, index) => (
+          <Card
+            key={index}
+            title={project.title}
+            content={
       <div>
         <h1 className="text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
           My Projects
@@ -65,6 +75,16 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
+            }
+            className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Projects;
             } className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full" />
           ))}
         </div>
