@@ -10,7 +10,9 @@ const GenAITimeline = ({
   limit,
   heading,
   intro,
-  cta
+  cta,
+  activeFilters,
+  onImageClick
 }) => {
   const timelineRef = useRef(null);
   const timelineItems = useMemo(() => (limit ? items.slice(0, limit) : items), [items, limit]);
@@ -82,20 +84,26 @@ const GenAITimeline = ({
 
     return () => {
       animations.forEach((animation) => {
-        if (animation.scrollTrigger) {
-          animation.scrollTrigger.kill();
-        }
-        animation.kill();
+        animation?.scrollTrigger?.kill();
+        animation?.kill?.();
       });
 
       if (axisAnimation) {
-        if (axisAnimation.scrollTrigger) {
-          axisAnimation.scrollTrigger.kill();
-        }
-        axisAnimation.kill();
+        axisAnimation.scrollTrigger?.kill();
+        axisAnimation.kill?.();
       }
     };
   }, [timelineItems]);
+
+  const activeTags = activeFilters?.tags ?? [];
+  const activeTools = activeFilters?.tools ?? [];
+  const activeMediums = activeFilters?.mediums ?? [];
+
+  const handleImageSelect = (item, imgIndex) => {
+    if (typeof onImageClick === 'function') {
+      onImageClick(item, imgIndex);
+    }
+  };
 
   return (
     <section className="timeline-showcase">
@@ -121,20 +129,50 @@ const GenAITimeline = ({
                 }`}
                 style={{ minHeight: '300px' }}
               >
-                {item.images.map((image, imgIndex) => (
-                  <img
-                    key={imgIndex}
-                    src={`/images/aiart/${image}`}
-                    alt={`${item.title} frame ${imgIndex + 1}`}
-                    className={`w-full h-full object-contain absolute top-0 left-0 transition-opacity duration-500 ${
-                      imgIndex === currentSlides[index] ? 'opacity-100 active' : 'opacity-0'
-                    }`}
-                    style={{
-                      transform: `translateX(${(imgIndex - currentSlides[index]) * 100}%)`,
-                      transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out',
-                    }}
-                  />
-                ))}
+                {item.images.map((image, imgIndex) => {
+                  const isActive = imgIndex === currentSlides[index];
+                  const interactive = typeof onImageClick === 'function';
+                  const slideClassNames = ['carousel-slide'];
+
+                  if (isActive) {
+                    slideClassNames.push('active');
+                  }
+
+                  if (interactive) {
+                    slideClassNames.push('interactive');
+                  }
+
+                  return (
+                    <div
+                      key={imgIndex}
+                      role={interactive ? 'button' : undefined}
+                      tabIndex={interactive ? 0 : undefined}
+                      className={slideClassNames.join(' ')}
+                      onClick={interactive ? () => handleImageSelect(item, imgIndex) : undefined}
+                      onKeyDown={
+                        interactive
+                          ? (event) => {
+                              if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault();
+                                handleImageSelect(item, imgIndex);
+                              }
+                            }
+                          : undefined
+                      }
+                      style={{
+                        transform: `translateX(${(imgIndex - currentSlides[index]) * 100}%)`,
+                        transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out',
+                      }}
+                    >
+                      <img
+                        src={`/images/aiart/${image}`}
+                        alt={`${item.title} frame ${imgIndex + 1}`}
+                        className="w-full h-full object-contain"
+                        aria-hidden={onImageClick ? 'true' : undefined}
+                      />
+                    </div>
+                  );
+                })}
                 {item.images.length > 1 && (
                   <>
                     <button
@@ -164,6 +202,46 @@ const GenAITimeline = ({
                 <div className="date">{item.date}</div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
+                {(item.medium || item.tags?.length > 0 || item.tools?.length > 0) && (
+                  <div className="timeline-details">
+                    {item.medium && (
+                      <div className={`timeline-meta ${activeMediums.includes(item.medium) ? 'active' : ''}`}>
+                        <span className="meta-label">Medium</span>
+                        <span className="meta-value">{item.medium}</span>
+                      </div>
+                    )}
+                    {item.tools?.length > 0 && (
+                      <div className="timeline-meta">
+                        <span className="meta-label">Tools</span>
+                        <div className="meta-value">
+                          {item.tools.map((tool) => (
+                            <span
+                              key={tool}
+                              className={`timeline-badge ${activeTools.includes(tool) ? 'active' : ''}`}
+                            >
+                              {tool}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {item.tags?.length > 0 && (
+                      <div className="timeline-meta">
+                        <span className="meta-label">Tags</span>
+                        <div className="timeline-tags">
+                          {item.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className={`timeline-tag ${activeTags.includes(tag) ? 'active' : ''}`}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>

@@ -1,0 +1,328 @@
+.timelinePage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  color: rgba(79, 70, 229, 0.9);
+}
+
+:global(.dark) .eyebrow {
+  color: rgba(165, 180, 252, 0.9);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  margin: 0.75rem 0;
+}
+
+.subtitle {
+  max-width: 760px;
+  margin: 0 auto;
+  color: rgba(30, 41, 59, 0.76);
+  line-height: 1.6;
+}
+
+:global(.dark) .subtitle {
+  color: rgba(226, 232, 240, 0.8);
+}
+
+.filters {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.filterGroup {
+  background: rgba(59, 130, 246, 0.08);
+  border-radius: 18px;
+  padding: 1.25rem;
+  backdrop-filter: blur(6px);
+}
+
+:global(.dark) .filterGroup {
+  background: rgba(59, 130, 246, 0.16);
+}
+
+.filterTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.filterPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.filterButton {
+  border: none;
+  padding: 0.5rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #1e3a8a;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filterButton:hover,
+.filterButton:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.18);
+}
+
+.filterButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.4);
+}
+
+.filterButtonActive {
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: #ffffff;
+  box-shadow: 0 8px 22px rgba(99, 102, 241, 0.35);
+}
+
+:global(.dark) .filterButton {
+  background: rgba(30, 41, 59, 0.75);
+  color: #cbd5f5;
+}
+
+:global(.dark) .filterButtonActive {
+  background: linear-gradient(135deg, rgba(165, 180, 252, 0.95), rgba(129, 140, 248, 0.95));
+  color: #111827;
+}
+
+.filterActions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.clearButton {
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.65);
+  color: #1f2937;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.clearButton:hover,
+.clearButton:focus {
+  background: rgba(59, 130, 246, 0.16);
+  color: #1e3a8a;
+}
+
+:global(.dark) .clearButton {
+  background: rgba(30, 41, 59, 0.8);
+  color: #e2e8f0;
+}
+
+:global(.dark) .clearButton:hover,
+:global(.dark) .clearButton:focus {
+  background: rgba(129, 140, 248, 0.35);
+  color: #0f172a;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  border-radius: 18px;
+  background: rgba(226, 232, 240, 0.45);
+  color: #1f2937;
+}
+
+:global(.dark) .emptyState {
+  background: rgba(30, 41, 59, 0.72);
+  color: #f8fafc;
+}
+
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  padding: 1.5rem;
+}
+
+.lightboxContent {
+  position: relative;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 22px;
+  max-width: min(960px, 95vw);
+  width: 100%;
+  padding: 2.5rem 2rem 2rem;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+:global(.dark) .lightboxContent {
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.65);
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgba(51, 65, 85, 0.85);
+}
+
+:global(.dark) .lightboxClose {
+  color: rgba(226, 232, 240, 0.9);
+}
+
+.lightboxImageWrapper {
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.25);
+}
+
+.lightboxImage {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  max-height: 60vh;
+}
+
+.lightboxMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lightboxMeta h3 {
+  margin: 0;
+}
+
+.lightboxMeta p {
+  margin: 0;
+  color: rgba(71, 85, 105, 0.85);
+}
+
+:global(.dark) .lightboxMeta p {
+  color: rgba(203, 213, 225, 0.86);
+}
+
+.lightboxChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.lightboxChip {
+  padding: 0.45rem 0.8rem;
+  border-radius: 9999px;
+  background: rgba(99, 102, 241, 0.16);
+  color: #3730a3;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+:global(.dark) .lightboxChip {
+  background: rgba(129, 140, 248, 0.28);
+  color: #c7d2fe;
+}
+
+.lightboxControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lightboxNav {
+  border: none;
+  background: rgba(99, 102, 241, 0.18);
+  color: #312e81;
+  font-size: 1.85rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lightboxNav:hover,
+.lightboxNav:focus {
+  background: rgba(79, 70, 229, 0.35);
+  transform: translateY(-1px);
+}
+
+:global(.dark) .lightboxNav {
+  background: rgba(129, 140, 248, 0.25);
+  color: #eef2ff;
+}
+
+:global(.dark) .lightboxNav:hover,
+:global(.dark) .lightboxNav:focus {
+  background: rgba(129, 140, 248, 0.4);
+  color: #111827;
+}
+
+@media (min-width: 768px) {
+  .filters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .filterActions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+
+  .lightboxContent {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 1.85rem;
+  }
+
+  .filters {
+    gap: 1rem;
+  }
+
+  .filterGroup {
+    padding: 1rem;
+  }
+
+  .lightboxContent {
+    padding: 2rem 1.25rem 1.75rem;
+  }
+
+  .lightboxImage {
+    max-height: 50vh;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Card from './Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -117,19 +118,9 @@ const HomeSection = () => {
         heading="Visual Generative AI Timeline"
         intro="A quick preview of the systems and styles I have iterated on."
         cta={(
-          <a
-            className="timeline-link"
-            href="#ai-art"
-            onClick={(e) => {
-              e.preventDefault();
-              const aiArtNav = document.querySelector('[data-name="AI Art"]');
-              if (aiArtNav) {
-                aiArtNav.click();
-              }
-            }}
-          >
+          <Link className="timeline-link" to="/ai-art/timeline">
             View the full AI art story
-          </a>
+          </Link>
         )}
       />
     </section>
