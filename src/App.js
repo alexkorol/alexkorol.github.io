@@ -6,7 +6,16 @@ import Projects from './Projects';
 import HomeSection from './HomeSection';
 import GenAITimelinePage from './pages/GenAITimelinePage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faProjectDiagram, faPalette, faArchive, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHome,
+  faProjectDiagram,
+  faPalette,
+  faArchive,
+  faFlask,
+  faSun,
+  faMoon,
+} from '@fortawesome/free-solid-svg-icons';
+import LabNotesSection from './components/LabNotesSection';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -14,6 +23,11 @@ function App() {
   const navigate = useNavigate();
 
   const navItems = [
+    { name: 'Home', icon: faHome },
+    { name: 'Projects', icon: faProjectDiagram },
+    { name: 'AI Art', icon: faPalette },
+    { name: 'Lab Notes', icon: faFlask },
+    { name: 'SREF Vault', icon: faArchive, link: 'https://alexkorol.github.io/seedvault' }
     { name: 'Home', icon: faHome, path: '/' },
     { name: 'Projects', icon: faProjectDiagram, path: '/projects' },
     { name: 'AI Art', icon: faPalette, path: '/ai-art' },
@@ -28,6 +42,16 @@ function App() {
     }
   }, [darkMode]);
 
+  const renderSection = (section) => {
+    switch (section) {
+      case 'projects':
+        return <Projects />;
+      case 'ai art':
+        return <AIArtSection />;
+      case 'lab notes':
+        return <LabNotesSection />;
+      default:
+        return <HomeSection />;
   const isActive = (item) => {
     if (item.external) {
       return false;
