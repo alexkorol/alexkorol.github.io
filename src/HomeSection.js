@@ -96,7 +96,7 @@ const HomeSection = () => {
   ];
 
   return (
-    <section className="home-section">
+    <section id="home" data-section="home" className="home-section">
       <div className="hero">
         <span className="eyebrow">Alexei Korol • AI Engineer &amp; Builder</span>
         <h1 className="hero-title">Designing smarter products with Generative AI, code, and curiosity.</h1>
@@ -120,13 +120,6 @@ const HomeSection = () => {
           <a
             className="timeline-link"
             href="#ai-art"
-            onClick={(e) => {
-              e.preventDefault();
-              const aiArtNav = document.querySelector('[data-name="AI Art"]');
-              if (aiArtNav) {
-                aiArtNav.click();
-              }
-            }}
           >
             View the full AI art story
           </a>

@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import Card from './Card';
-
-
 const Projects = () => {
   const projects = [
     {
@@ -23,13 +21,16 @@ const Projects = () => {
   ];
 
   return (
-      <div>
-        <h1 className="text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-          My Projects
-        </h1>
-        <div className="card-container-projects grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <Card key={index} title={project.title} content={
+    <section id="projects" data-section="projects">
+      <h1 className="text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+        My Projects
+      </h1>
+      <div className="card-container-projects grid grid-cols-1 md:grid-cols-2 gap-6">
+        {projects.map((project, index) => (
+          <Card
+            key={index}
+            title={project.title}
+            content={
               <div className="flex flex-col h-full">
                 <img src={project.image} alt={project.title} className="w-full h-auto max-h-48 object-cover mb-4 rounded-t-lg" />
                 <p className="mb-4 flex-grow">{project.description}</p>
@@ -48,11 +49,13 @@ const Projects = () => {
                   </a>
                 )}
               </div>
-            } className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full" />
-          ))}
-        </div>
+            }
+            className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+          />
+        ))}
       </div>
-    );
-  };
-  
-  export default Projects;
+    </section>
+  );
+};
+
+export default Projects;
