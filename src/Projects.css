@@ -1,0 +1,203 @@
+.project-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+@media (min-width: 768px) {
+  .project-card-actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.project-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.project-case-study-button {
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: linear-gradient(120deg, rgba(59, 130, 246, 0.12), rgba(20, 184, 166, 0.12));
+  color: var(--accent-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.project-case-study-button:hover,
+.project-case-study-button:focus {
+  background: linear-gradient(120deg, var(--accent-primary), var(--accent-secondary));
+  color: #fff;
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 16px 30px -20px rgba(79, 70, 229, 0.85);
+}
+
+.dark .project-case-study-button {
+  border-color: rgba(56, 189, 248, 0.35);
+  color: var(--link-color-dark);
+  background: linear-gradient(120deg, rgba(56, 189, 248, 0.08), rgba(96, 165, 250, 0.08));
+}
+
+.dark .project-case-study-button:hover,
+.dark .project-case-study-button:focus {
+  background: linear-gradient(120deg, var(--link-color-dark), var(--link-hover-color-dark));
+}
+
+.project-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 999;
+}
+
+.project-modal {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 1.25rem;
+  max-width: 720px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 2.25rem 2.5rem;
+  box-shadow: 0 35px 60px -45px rgba(15, 23, 42, 0.65);
+}
+
+.dark .project-modal {
+  background: rgba(15, 23, 42, 0.98);
+  color: #e2e8f0;
+  box-shadow: 0 35px 60px -45px rgba(148, 163, 184, 0.45);
+}
+
+.project-modal:focus {
+  outline: none;
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: inherit;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.project-modal-close:hover,
+.project-modal-close:focus {
+  background: rgba(148, 163, 184, 0.15);
+  outline: none;
+}
+
+.project-modal-body h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.project-modal-summary {
+  margin-bottom: 1.5rem;
+  color: rgba(15, 23, 42, 0.75);
+}
+
+.dark .project-modal-summary {
+  color: rgba(226, 232, 240, 0.8);
+}
+
+.project-modal-section + .project-modal-section {
+  margin-top: 1.35rem;
+}
+
+.project-modal-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.45rem;
+  color: var(--accent-primary);
+}
+
+.dark .project-modal-section h3 {
+  color: var(--link-color-dark);
+}
+
+.project-modal-stack {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-modal-stack li {
+  padding: 0.4rem 0.75rem;
+  background: rgba(59, 130, 246, 0.12);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.dark .project-modal-stack li {
+  background: rgba(56, 189, 248, 0.18);
+}
+
+.project-modal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.project-modal-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  color: var(--accent-primary);
+  transition: all 0.3s ease;
+}
+
+.project-modal-links a:hover,
+.project-modal-links a:focus {
+  background: linear-gradient(120deg, var(--accent-primary), var(--accent-secondary));
+  color: #fff;
+  border-color: transparent;
+  outline: none;
+}
+
+.dark .project-modal-links a {
+  border-color: rgba(56, 189, 248, 0.25);
+  color: var(--link-color-dark);
+}
+
+.dark .project-modal-links a:hover,
+.dark .project-modal-links a:focus {
+  background: linear-gradient(120deg, var(--link-color-dark), var(--link-hover-color-dark));
+}
+
+@media (max-width: 640px) {
+  .project-modal {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .project-modal-body h2 {
+    font-size: 1.65rem;
+  }
+}
