@@ -7,7 +7,6 @@ import projects from './data/projects';
 import ProjectModal from './components/ProjectModal';
 import './Projects.css';
 
-
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -25,20 +24,18 @@ const Projects = () => {
         My Projects
       </h1>
       <div className="card-container-projects grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <Card
-            key={index}
+            key={project.id}
             title={project.title}
+            className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
             content={
-      <div>
-        <h1 className="text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-          My Projects
-        </h1>
-        <div className="card-container-projects grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project) => (
-            <Card key={project.id} title={project.title} content={
               <div className="flex flex-col h-full">
-                <img src={project.image} alt={project.title} className="w-full h-auto max-h-48 object-cover mb-4 rounded-t-lg" />
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-auto max-h-48 object-cover mb-4 rounded-t-lg"
+                />
                 <p className="mb-4 flex-grow">{project.description}</p>
                 <div className="project-card-actions mt-auto">
                   <button
@@ -76,23 +73,12 @@ const Projects = () => {
                 </div>
               </div>
             }
-            className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
           />
         ))}
       </div>
+      {selectedProject && <ProjectModal project={selectedProject} onClose={handleCloseModal} />}
     </section>
   );
 };
 
 export default Projects;
-            } className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full" />
-          ))}
-        </div>
-        {selectedProject && (
-          <ProjectModal project={selectedProject} onClose={handleCloseModal} />
-        )}
-      </div>
-    );
-  };
-
-  export default Projects;
