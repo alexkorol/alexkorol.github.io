@@ -1,0 +1,220 @@
+.experience-timeline-wrapper {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.experience-timeline {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 0 3rem;
+}
+
+.experience-timeline-axis {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.28), rgba(14, 165, 233, 0.12));
+  transform: translateX(-50%);
+  border-radius: 999px;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .experience-timeline-axis {
+    display: block;
+  }
+}
+
+.dark .experience-timeline-axis {
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.35), rgba(192, 132, 252, 0.18));
+}
+
+.experience-timeline-item {
+  position: relative;
+  width: 100%;
+  padding: 2.5rem 0;
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+@media (min-width: 768px) {
+  .experience-timeline-item {
+    width: 50%;
+  }
+
+  .experience-timeline-item:not(.is-reversed) {
+    margin-left: 50%;
+    padding-left: 3.5rem;
+  }
+
+  .experience-timeline-item.is-reversed {
+    margin-right: 50%;
+    padding-right: 3.5rem;
+  }
+}
+
+.experience-node {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .experience-node {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.95), rgba(14, 165, 233, 0.85));
+    box-shadow: 0 10px 25px -12px rgba(79, 70, 229, 0.9);
+    border: 2px solid #fff;
+  }
+
+  .dark .experience-node {
+    border-color: rgba(15, 23, 42, 0.95);
+  }
+}
+
+.experience-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  box-shadow: 0 24px 45px -32px rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(140deg, rgba(99, 102, 241, 0.08), rgba(14, 165, 233, 0.06));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.experience-card:hover::before {
+  opacity: 1;
+}
+
+.dark .experience-card {
+  background: rgba(15, 23, 42, 0.82);
+  border-color: rgba(56, 189, 248, 0.18);
+  box-shadow: 0 24px 45px -32px rgba(14, 165, 233, 0.55);
+}
+
+.dark .experience-card::before {
+  background: linear-gradient(140deg, rgba(56, 189, 248, 0.12), rgba(192, 132, 252, 0.1));
+}
+
+.experience-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.experience-dates {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.dark .experience-dates {
+  color: var(--link-color-dark);
+}
+
+.experience-role {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+}
+
+.experience-organization {
+  margin: 0;
+  color: var(--muted-text-light);
+}
+
+.dark .experience-organization {
+  color: var(--muted-text-dark);
+}
+
+.experience-highlights {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: var(--muted-text-light);
+}
+
+.experience-highlights li {
+  line-height: 1.5;
+}
+
+.dark .experience-highlights {
+  color: var(--muted-text-dark);
+}
+
+.experience-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.experience-metrics div {
+  flex: 1 1 140px;
+  padding: 0.75rem 1rem;
+  border-radius: 0.9rem;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.12);
+}
+
+.experience-metrics dt {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+  color: var(--accent-primary);
+}
+
+.experience-metrics dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-color-light);
+}
+
+.dark .experience-metrics div {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.16);
+}
+
+.dark .experience-metrics dt {
+  color: var(--link-color-dark);
+}
+
+.dark .experience-metrics dd {
+  color: var(--text-color-dark);
+}
+
+@media (max-width: 767px) {
+  .experience-card {
+    padding: 1.5rem;
+  }
+
+  .experience-highlights {
+    padding-left: 1rem;
+  }
+}

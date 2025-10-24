@@ -5,6 +5,8 @@ import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import GenAITimeline from './GenAITimeline';
 import genAITimeline from './timelineData';
+import ExperienceTimeline from './components/ExperienceTimeline';
+import experienceData from './data/experience';
 
 const HomeSection = () => {
   const azureAI102Id = process.env.REACT_APP_AZURE_AI102_ID || 'Pending update';
@@ -131,6 +133,12 @@ const HomeSection = () => {
             View the full AI art story
           </a>
         )}
+      />
+
+      <ExperienceTimeline
+        experiences={experienceData}
+        heading="Experience & Impact"
+        intro="Snapshots of the teams, products, and outcomes I've driven across high-growth environments."
       />
     </section>
   );
