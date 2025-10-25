@@ -145,3 +145,87 @@ if (projectCards.length) {
       });
   });
 }
+
+const timelineTrack = document.querySelector('.ai-timeline__track');
+if (timelineTrack) {
+  const items = Array.from(timelineTrack.querySelectorAll('.ai-timeline__item'));
+  const progressBar = document.querySelector('.ai-timeline__progress-bar');
+  const activeYear = document.querySelector('.ai-timeline__active-year');
+  const activeModel = document.querySelector('.ai-timeline__active-model');
+  const activeLabel = document.querySelector('.ai-timeline__active-label');
+  const prevButton = document.querySelector('.ai-timeline__nav--prev');
+  const nextButton = document.querySelector('.ai-timeline__nav--next');
+  let animationFrame;
+
+  const updateTimelineState = () => {
+    const maxScroll = timelineTrack.scrollWidth - timelineTrack.clientWidth;
+    const progress = maxScroll <= 0 ? 1 : Math.min(1, Math.max(0, timelineTrack.scrollLeft / maxScroll));
+    if (progressBar) {
+      progressBar.style.setProperty('--progress', progress.toFixed(4));
+    }
+
+    if (!items.length) return;
+
+    const trackRect = timelineTrack.getBoundingClientRect();
+    const centerX = trackRect.left + trackRect.width / 2;
+    let closestItem = items[0];
+    let smallestDistance = Number.POSITIVE_INFINITY;
+
+    items.forEach((item) => {
+      const rect = item.getBoundingClientRect();
+      const itemCenter = rect.left + rect.width / 2;
+      const distance = Math.abs(centerX - itemCenter);
+      if (distance < smallestDistance) {
+        smallestDistance = distance;
+        closestItem = item;
+      }
+    });
+
+    if (closestItem) {
+      const { year = '', model = '', label = '' } = closestItem.dataset;
+      if (activeYear) activeYear.textContent = year;
+      if (activeModel) activeModel.textContent = model;
+      if (activeLabel) activeLabel.textContent = label || model;
+
+      items.forEach((item) => {
+        item.classList.toggle('is-active', item === closestItem);
+      });
+    }
+  };
+
+  const scheduleTimelineUpdate = () => {
+    if (animationFrame) return;
+    animationFrame = requestAnimationFrame(() => {
+      animationFrame = null;
+      updateTimelineState();
+    });
+  };
+
+  timelineTrack.addEventListener('scroll', scheduleTimelineUpdate, { passive: true });
+  window.addEventListener('resize', scheduleTimelineUpdate);
+
+  const scrollTimelineBy = (direction) => {
+    const amount = timelineTrack.clientWidth * 0.75;
+    timelineTrack.scrollBy({ left: amount * direction, behavior: 'smooth' });
+  };
+
+  if (prevButton) {
+    prevButton.addEventListener('click', () => scrollTimelineBy(-1));
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', () => scrollTimelineBy(1));
+  }
+
+  timelineTrack.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      scrollTimelineBy(1);
+    } else if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      scrollTimelineBy(-1);
+    }
+  });
+
+  updateTimelineState();
+}
