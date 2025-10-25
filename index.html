@@ -33,6 +33,7 @@
         <nav class="site-nav" id="site-nav">
           <ul class="nav-list">
             <li><a href="#work">Work</a></li>
+            <li><a href="#timeline">AI Timeline</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#now">Now</a></li>
@@ -285,6 +286,156 @@
                 <span class="project-card__stat project-card__stat--updated">Updated —</span>
               </footer>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--timeline" id="timeline">
+        <div class="container">
+          <div class="section__heading" data-reveal>
+            <p class="eyebrow">Image Generation Timeline</p>
+            <h2>Tracing the evolution of my AI art experiments</h2>
+            <p>
+              A curated trail of the prompts, models, and happy accidents that
+              helped me turn machine imagination into production-ready visuals.
+              Scroll sideways (or tap the arrows) to explore how the style and
+              fidelity progressed over the years.
+            </p>
+          </div>
+
+          <div class="ai-timeline" data-reveal data-reveal-delay="80">
+            <div class="ai-timeline__controls">
+              <button class="ai-timeline__nav ai-timeline__nav--prev" type="button" aria-label="Scroll timeline backward">
+                <span aria-hidden="true">&#8592;</span>
+              </button>
+              <p class="ai-timeline__active" aria-live="polite">
+                <span class="ai-timeline__active-year">2021</span>
+                <span class="ai-timeline__active-model">Pixel Art Diffusion</span>
+                <span class="ai-timeline__active-label">Retro city light studies</span>
+              </p>
+              <button class="ai-timeline__nav ai-timeline__nav--next" type="button" aria-label="Scroll timeline forward">
+                <span aria-hidden="true">&#8594;</span>
+              </button>
+            </div>
+
+            <div class="ai-timeline__track" role="list" tabindex="0" aria-label="AI art timeline">
+              <article class="ai-timeline__item is-active" role="listitem" data-year="2021" data-model="Pixel Art Diffusion" data-label="Retro city light studies">
+                <figure class="ai-timeline__figure">
+                  <img src="images/aiart/pixelart-diffusion-1.png" alt="Pixel art skyline bathed in magenta neon lights" loading="lazy" />
+                </figure>
+                <div class="ai-timeline__body">
+                  <p class="ai-timeline__meta">2021 · Pixel Art Diffusion</p>
+                  <h3>Retro city light studies</h3>
+                  <p>
+                    Early diffusion workflows where I pushed latent space toward
+                    crunchy, low-poly silhouettes that still read as modern UI
+                    explorations.
+                  </p>
+                  <ul class="ai-timeline__tags">
+                    <li>Diffusion</li>
+                    <li>Pixel clustering</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="ai-timeline__item" role="listitem" data-year="2022" data-model="CLIP + VQGAN" data-label="Organic motion tests">
+                <figure class="ai-timeline__figure">
+                  <img src="images/aiart/fungoid-3.png" alt="Organic mushroom-like structures rendered in pastel gradients" loading="lazy" />
+                </figure>
+                <div class="ai-timeline__body">
+                  <p class="ai-timeline__meta">2022 · CLIP + VQGAN</p>
+                  <h3>Organic motion tests</h3>
+                  <p>
+                    Combining CLIP guidance with iterative prompt swapping to
+                    yield fluid, biomorphic textures that became backgrounds for
+                    interactive prototypes.
+                  </p>
+                  <ul class="ai-timeline__tags">
+                    <li>Prompt morphing</li>
+                    <li>Biomorphic UI</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="ai-timeline__item" role="listitem" data-year="2023" data-model="Panoramic Diffusion" data-label="360° storyboards">
+                <figure class="ai-timeline__figure">
+                  <img src="images/aiart/360-3.jpg" alt="Panoramic sci-fi landscape with glowing pillars and aurora" loading="lazy" />
+                </figure>
+                <div class="ai-timeline__body">
+                  <p class="ai-timeline__meta">2023 · Panoramic Diffusion</p>
+                  <h3>360° storyboards</h3>
+                  <p>
+                    Engineered multi-angle prompt stitching that allowed me to
+                    storyboard immersive experiences directly inside a browser
+                    viewport.
+                  </p>
+                  <ul class="ai-timeline__tags">
+                    <li>Latent stitching</li>
+                    <li>Immersive UX</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="ai-timeline__item" role="listitem" data-year="2023" data-model="DALL·E 3" data-label="Narrative lighting passes">
+                <figure class="ai-timeline__figure">
+                  <img src="images/aiart/dalle3_1.jpg" alt="Illustrated explorer standing before a radiant gateway" loading="lazy" />
+                </figure>
+                <div class="ai-timeline__body">
+                  <p class="ai-timeline__meta">2023 · DALL·E 3</p>
+                  <h3>Narrative lighting passes</h3>
+                  <p>
+                    Introduced semantic scene breakdowns so each render focused
+                    on mood, atmosphere, and storytelling clarity for hero art.
+                  </p>
+                  <ul class="ai-timeline__tags">
+                    <li>Scene blocking</li>
+                    <li>Lighting loops</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="ai-timeline__item" role="listitem" data-year="2024" data-model="Artflow custom nodes" data-label="Painterly controlnets">
+                <figure class="ai-timeline__figure">
+                  <img src="images/aiart/artflow_2.png" alt="Painterly portrait of a futuristic botanist with vivid lighting" loading="lazy" />
+                </figure>
+                <div class="ai-timeline__body">
+                  <p class="ai-timeline__meta">2024 · Artflow custom nodes</p>
+                  <h3>Painterly controlnets</h3>
+                  <p>
+                    Built reusable node graphs that blend sketch inputs, depth
+                    maps, and stylization layers for controllable brushstroke
+                    finishes.
+                  </p>
+                  <ul class="ai-timeline__tags">
+                    <li>ControlNet</li>
+                    <li>Custom tooling</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="ai-timeline__item" role="listitem" data-year="2024" data-model="Stable Diffusion XL" data-label="UI-ready exports">
+                <figure class="ai-timeline__figure">
+                  <img src="images/aiart/txt2image-v5-4.png" alt="Vibrant abstract UI composition with floating cards and glassmorphism" loading="lazy" />
+                </figure>
+                <div class="ai-timeline__body">
+                  <p class="ai-timeline__meta">2024 · Stable Diffusion XL</p>
+                  <h3>UI-ready exports</h3>
+                  <p>
+                    Finalized a toolkit that hands me layered outputs, palette
+                    suggestions, and typography pairings directly from the
+                    generation run.
+                  </p>
+                  <ul class="ai-timeline__tags">
+                    <li>Layered assets</li>
+                    <li>Design handoff</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+
+            <div class="ai-timeline__progress" aria-hidden="true">
+              <span class="ai-timeline__progress-bar"></span>
+            </div>
           </div>
         </div>
       </section>
