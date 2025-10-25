@@ -485,6 +485,17 @@ body[data-theme='light'] .section--alt {
   border-bottom: 1px solid var(--color-border);
 }
 
+body[data-theme='light'] .section--timeline {
+  background: linear-gradient(
+      180deg,
+      color-mix(in srgb, rgba(255, 255, 255, 0.98) 88%, rgba(14, 165, 233, 0.16)),
+      color-mix(in srgb, rgba(255, 255, 255, 0.96) 92%, rgba(236, 72, 153, 0.08))
+    ),
+    var(--color-bg);
+  border-top-color: rgba(148, 163, 184, 0.16);
+  border-bottom-color: rgba(148, 163, 184, 0.16);
+}
+
 .section--timeline::before {
   content: '';
   position: absolute;
@@ -495,10 +506,14 @@ body[data-theme='light'] .section--alt {
   pointer-events: none;
 }
 
+body[data-theme='light'] .section--timeline::before {
+  background: radial-gradient(circle at center, rgba(14, 165, 233, 0.2), transparent 68%);
+}
+
 .ai-timeline {
-  margin-top: 3.25rem;
+  margin-top: 3.75rem;
   display: grid;
-  gap: 1.75rem;
+  gap: 2rem;
   position: relative;
   z-index: 1;
 }
@@ -508,26 +523,38 @@ body[data-theme='light'] .section--alt {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 0.9rem 1.4rem;
+  padding: 1rem 1.5rem;
   border-radius: var(--radius-large);
-  background: color-mix(in srgb, var(--color-elevated) 82%, rgba(56, 189, 248, 0.12));
-  border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+  background: color-mix(in srgb, var(--color-elevated) 90%, rgba(56, 189, 248, 0.1));
+  border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
   box-shadow: var(--shadow-border), var(--shadow-soft);
   flex-wrap: wrap;
+}
+
+body[data-theme='light'] .ai-timeline__controls {
+  background: color-mix(in srgb, rgba(255, 255, 255, 0.96) 88%, rgba(14, 165, 233, 0.08));
+  border-color: rgba(148, 163, 184, 0.18);
+  box-shadow: 0 18px 36px rgba(148, 163, 184, 0.18);
 }
 
 .ai-timeline__nav {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  border: 1px solid color-mix(in srgb, var(--color-border) 65%, transparent);
-  background: color-mix(in srgb, var(--color-surface) 85%, rgba(56, 189, 248, 0.12));
+  border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 88%, rgba(56, 189, 248, 0.12));
   color: var(--color-text);
   display: grid;
   place-items: center;
   font-size: 1.35rem;
   cursor: pointer;
   transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+body[data-theme='light'] .ai-timeline__nav {
+  background: rgba(248, 250, 252, 0.95);
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 14px 24px rgba(148, 163, 184, 0.16);
 }
 
 .ai-timeline__nav:hover,
@@ -567,15 +594,25 @@ body[data-theme='light'] .section--alt {
   color: var(--color-muted);
 }
 
+body[data-theme='light'] .ai-timeline__active-year,
+body[data-theme='light'] .ai-timeline__active-label {
+  color: color-mix(in srgb, var(--color-muted) 70%, rgba(14, 165, 233, 0.35));
+}
+
+body[data-theme='light'] .ai-timeline__active-model {
+  color: color-mix(in srgb, var(--color-text) 92%, rgba(14, 165, 233, 0.3));
+}
+
 .ai-timeline__track {
-  margin: 0 -1.75rem;
-  padding: 0 1.75rem 1.75rem;
+  margin: 0;
+  padding: 0 0 1.75rem;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(280px, 1fr);
-  gap: 1.5rem;
+  grid-auto-columns: minmax(320px, min(420px, 38vw));
+  gap: 1.75rem;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: clamp(1.5rem, 6vw, 3rem);
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   position: relative;
@@ -587,22 +624,7 @@ body[data-theme='light'] .section--alt {
 
 .ai-timeline__track::after,
 .ai-timeline__track::before {
-  content: '';
-  position: sticky;
-  top: 0;
-  width: 48px;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.ai-timeline__track::before {
-  left: 1.75rem;
-  background: linear-gradient(90deg, var(--color-bg), transparent);
-}
-
-.ai-timeline__track::after {
-  right: 1.75rem;
-  background: linear-gradient(270deg, var(--color-bg), transparent);
+  content: none;
 }
 
 .ai-timeline__track::-webkit-scrollbar {
@@ -619,24 +641,34 @@ body[data-theme='light'] .section--alt {
 }
 
 .ai-timeline__item {
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   background: var(--color-elevated);
-  border-radius: calc(var(--radius-large) - 6px);
-  border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+  border-radius: calc(var(--radius-large) - 4px);
+  border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
   box-shadow: var(--shadow-border), var(--shadow-soft);
   display: flex;
   flex-direction: column;
-  gap: 1.15rem;
-  padding: 1.75rem;
+  gap: 1.2rem;
+  padding: 1.85rem;
   position: relative;
-  transition: transform 0.35s ease, border-color 0.35s ease;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+body[data-theme='light'] .ai-timeline__item {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(148, 163, 184, 0.16);
+  box-shadow: 0 20px 42px rgba(148, 163, 184, 0.2);
+}
+
+body[data-theme='light'] .ai-timeline__item.is-active {
+  box-shadow: 0 28px 64px rgba(148, 163, 184, 0.24);
 }
 
 .ai-timeline__item::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.18), transparent 60%);
+  background: radial-gradient(140% 120% at 78% 18%, rgba(56, 189, 248, 0.12), transparent 70%);
   opacity: 0;
   transition: opacity 0.35s ease;
   pointer-events: none;
@@ -663,11 +695,17 @@ body[data-theme='light'] .section--alt {
 }
 
 .ai-timeline__figure {
-  border-radius: calc(var(--radius-medium) + 4px);
+  border-radius: calc(var(--radius-medium) + 6px);
   overflow: hidden;
   position: relative;
   aspect-ratio: 4 / 5;
-  background: rgba(148, 163, 184, 0.12);
+  background: rgba(148, 163, 184, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12);
+}
+
+body[data-theme='light'] .ai-timeline__figure {
+  background: rgba(226, 232, 240, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12);
 }
 
 .ai-timeline__figure img {
@@ -683,11 +721,23 @@ body[data-theme='light'] .section--alt {
   flex: 1;
 }
 
+.ai-timeline__body p {
+  color: color-mix(in srgb, var(--color-text) 72%, var(--color-muted) 28%);
+}
+
+body[data-theme='light'] .ai-timeline__body p {
+  color: color-mix(in srgb, var(--color-text) 78%, rgba(14, 165, 233, 0.18));
+}
+
 .ai-timeline__meta {
   font-size: 0.85rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: color-mix(in srgb, var(--color-muted) 92%, var(--color-text) 8%);
+}
+
+body[data-theme='light'] .ai-timeline__meta {
+  color: color-mix(in srgb, rgba(71, 85, 105, 1) 80%, rgba(14, 165, 233, 0.28));
 }
 
 .ai-timeline__body h3 {
@@ -707,9 +757,14 @@ body[data-theme='light'] .section--alt {
   font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 0.4rem 0.75rem;
+  padding: 0.45rem 0.85rem;
   border-radius: 999px;
   background: rgba(148, 163, 184, 0.2);
+}
+
+body[data-theme='light'] .ai-timeline__tags li {
+  background: rgba(14, 165, 233, 0.14);
+  color: color-mix(in srgb, var(--color-text) 85%, rgba(14, 165, 233, 0.4));
 }
 
 .ai-timeline__progress {
@@ -717,6 +772,10 @@ body[data-theme='light'] .section--alt {
   border-radius: 999px;
   background: rgba(148, 163, 184, 0.18);
   overflow: hidden;
+}
+
+body[data-theme='light'] .ai-timeline__progress {
+  background: rgba(148, 163, 184, 0.22);
 }
 
 .ai-timeline__progress-bar {
@@ -731,9 +790,9 @@ body[data-theme='light'] .section--alt {
 
 @media (max-width: 960px) {
   .ai-timeline__track {
-    margin: 0 -1.25rem;
-    padding: 0 1.25rem 1.5rem;
-    grid-auto-columns: minmax(240px, 80vw);
+    padding: 0 0 1.5rem;
+    grid-auto-columns: minmax(260px, 80vw);
+    scroll-padding-inline: clamp(1rem, 7vw, 2rem);
   }
 
   .ai-timeline__controls {
