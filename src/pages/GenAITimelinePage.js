@@ -5,17 +5,12 @@ import genAITimeline from '../timelineData';
 import styles from './TimelinePage.module.css';
 
 const GenAITimelinePage = () => {
-  const [selectedTags, setSelectedTags] = useState([]);
   const [selectedMediums, setSelectedMediums] = useState([]);
   const [selectedTools, setSelectedTools] = useState([]);
   const [lightbox, setLightbox] = useState(null);
 
   const timelineItems = useMemo(() => genAITimeline, []);
 
-  const allTags = useMemo(
-    () => Array.from(new Set(timelineItems.flatMap((item) => item.tags ?? []))).sort(),
-    [timelineItems]
-  );
   const allMediums = useMemo(
     () => Array.from(new Set(timelineItems.map((item) => item.medium).filter(Boolean))).sort(),
     [timelineItems]
@@ -29,28 +24,24 @@ const GenAITimelinePage = () => {
     setValue((prev) => (prev.includes(value) ? prev.filter((entry) => entry !== value) : [...prev, value]));
   };
 
-  const handleTagToggle = (tag) => toggleValue(tag, setSelectedTags);
   const handleMediumToggle = (medium) => toggleValue(medium, setSelectedMediums);
   const handleToolToggle = (tool) => toggleValue(tool, setSelectedTools);
 
   const clearFilters = () => {
-    setSelectedTags([]);
     setSelectedMediums([]);
     setSelectedTools([]);
   };
 
   const filteredItems = useMemo(() => {
     return timelineItems.filter((item) => {
-      const matchesTags =
-        selectedTags.length === 0 || selectedTags.every((tag) => (item.tags ?? []).includes(tag));
       const matchesMediums =
         selectedMediums.length === 0 || selectedMediums.includes(item.medium);
       const matchesTools =
         selectedTools.length === 0 || selectedTools.every((tool) => (item.tools ?? []).includes(tool));
 
-      return matchesTags && matchesMediums && matchesTools;
+      return matchesMediums && matchesTools;
     });
-  }, [timelineItems, selectedTags, selectedMediums, selectedTools]);
+  }, [timelineItems, selectedMediums, selectedTools]);
 
   const openLightbox = useCallback((item, imageIndex) => {
     setLightbox({ item, imageIndex });
@@ -105,7 +96,7 @@ const GenAITimelinePage = () => {
     return () => window.removeEventListener('keydown', handleKeydown);
   }, [lightbox, closeLightbox, showNextImage, showPrevImage]);
 
-  const hasFilters = selectedTags.length > 0 || selectedMediums.length > 0 || selectedTools.length > 0;
+  const hasFilters = selectedMediums.length > 0 || selectedTools.length > 0;
 
   const filterSummary = useMemo(() => {
     const summaryParts = [];
@@ -118,12 +109,8 @@ const GenAITimelinePage = () => {
       summaryParts.push(`tools: ${selectedTools.join(', ')}`);
     }
 
-    if (selectedTags.length > 0) {
-      summaryParts.push(`tags: ${selectedTags.join(', ')}`);
-    }
-
-    return summaryParts.join(' · ');
-  }, [selectedMediums, selectedTools, selectedTags]);
+    return summaryParts.join(' / ');
+  }, [selectedMediums, selectedTools]);
 
   const filteredCount = filteredItems.length;
   const introMessage = hasFilters
@@ -131,16 +118,18 @@ const GenAITimelinePage = () => {
     : 'Explore the complete journey behind each generative AI experiment, with artifacts, tools, and techniques highlighted along the way.';
 
   const activeFilters = useMemo(
-    () => ({ tags: selectedTags, tools: selectedTools, mediums: selectedMediums }),
-    [selectedTags, selectedTools, selectedMediums]
+    () => ({ tools: selectedTools, mediums: selectedMediums }),
+    [selectedTools, selectedMediums]
   );
 
   return (
     <div className={styles.timelinePage}>
       <header className={styles.header}>
-        <p className={styles.eyebrow}>Generative AI Showcase</p>
-        <h1 className={styles.title}>Full AI Art Story Timeline</h1>
-        <p className={styles.subtitle}>{introMessage}</p>
+        <p className={styles.eyebrow}>Generative image archive</p>
+        <h1 className={styles.title}>Full visual timeline</h1>
+        <p className={styles.subtitle}>
+          {introMessage} This archive is less about employable buzzwords and more about the long-running curiosity that pulled me into AI before the current LLM wave.
+        </p>
       </header>
 
       <section className={styles.filters} aria-label="Timeline filters">
@@ -171,22 +160,6 @@ const GenAITimelinePage = () => {
                 onClick={() => handleToolToggle(tool)}
               >
                 {tool}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.filterGroup}>
-          <h2 className={styles.filterTitle}>Tags</h2>
-          <div className={styles.filterPills}>
-            {allTags.map((tag) => (
-              <button
-                key={tag}
-                type="button"
-                className={`${styles.filterButton} ${selectedTags.includes(tag) ? styles.filterButtonActive : ''}`}
-                onClick={() => handleTagToggle(tag)}
-              >
-                {tag}
               </button>
             ))}
           </div>
@@ -236,7 +209,7 @@ const GenAITimelinePage = () => {
               onClick={(event) => event.stopPropagation()}
             >
               <button type="button" className={styles.lightboxClose} onClick={closeLightbox} aria-label="Close lightbox">
-                ×
+                x
               </button>
               <div className={styles.lightboxImageWrapper}>
                 <img
@@ -259,10 +232,10 @@ const GenAITimelinePage = () => {
               </div>
               <div className={styles.lightboxControls}>
                 <button type="button" onClick={showPrevImage} className={styles.lightboxNav} aria-label="View previous image">
-                  ‹
+                  Previous
                 </button>
                 <button type="button" onClick={showNextImage} className={styles.lightboxNav} aria-label="View next image">
-                  ›
+                  Next
                 </button>
               </div>
             </motion.div>

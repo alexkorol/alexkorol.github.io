@@ -1,136 +1,138 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Card from './Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import {
+  faArrowRight,
+  faArrowUpRightFromSquare,
+  faBolt,
+  faBrain,
+  faCodeBranch,
+  faLayerGroup,
+  faMicrochip,
+} from '@fortawesome/free-solid-svg-icons';
+import Projects from './Projects';
 import GenAITimeline from './GenAITimeline';
 import genAITimeline from './timelineData';
 import ExperienceTimeline from './components/ExperienceTimeline';
 import experienceData from './data/experience';
 
+const focusAreas = [
+  {
+    icon: faBrain,
+    title: 'Evaluation-minded agent tooling',
+    copy: 'Rubrics, traces, context packaging, and tools that make model behavior easier to inspect and improve.'
+  },
+  {
+    icon: faMicrochip,
+    title: 'Local model discipline',
+    copy: 'Apple Silicon inference, MLX, llama.cpp, embeddings, and workflows that stay useful off the cloud.'
+  },
+  {
+    icon: faCodeBranch,
+    title: 'Agent-ready code context',
+    copy: 'Repo maps, token planning, MCP surfaces, and artifacts that make coding agents less blind.'
+  },
+  {
+    icon: faLayerGroup,
+    title: 'Generative systems with taste',
+    copy: 'Image, music, game, and interface experiments that keep visual judgment in the loop.'
+  },
+];
+
 const HomeSection = () => {
-  const azureAI102Id = process.env.REACT_APP_AZURE_AI102_ID || 'Pending update';
-  const azureAI900Id = process.env.REACT_APP_AZURE_AI900_ID || 'Pending update';
-
-  const cards = [
-    {
-      title: 'About Me',
-      content:
-        'Software engineer focused on shipping AI-first features and meaningful digital experiences that blend automation, analytics, and delightful design.'
-    },
-    {
-      title: 'Skills Snapshot',
-      content: (
-        <ul className="list-disc list-inside space-y-1">
-          <li>Generative AI systems design &amp; prompt engineering</li>
-          <li>Python, TypeScript, React, Node.js</li>
-          <li>Cloud-native ML workflows on Azure</li>
-          <li>Data wrangling with Pandas, NumPy, Matplotlib</li>
-          <li>API integration, automation, and Git-based delivery</li>
-        </ul>
-      )
-    },
-    {
-      title: 'Recent Wins',
-      content: (
-        <ul className="list-disc list-inside space-y-1">
-          <li>Built devops helpers that use GPT agents to accelerate code review and QA.</li>
-          <li>Engineered dataset tooling to harvest Instagram imagery for ML fine-tunes.</li>
-          <li>Shipped Homework Helper and Quiz Helper apps combining OCR + OpenAI APIs.</li>
-        </ul>
-      )
-    },
-    {
-      title: 'Project Highlights',
-      content: (
-        <div className="space-y-3">
-          <div className="project-pill">
-            <h3>Repo2GPT</h3>
-            <p>Summarizes local &amp; GitHub repos into context packs for LLM assisted development.</p>
-          </div>
-          <div className="project-pill">
-            <h3>SREF Seed Vault</h3>
-            <p>Midjourney v6 style reference catalog with curated image exemplars and tags.</p>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: 'Certifications',
-      content: (
-        <ul className="list-disc list-inside space-y-1">
-          <li>
-            MS AI-102: Azure AI Engineer Associate — <span className="credential-id">Credential ID: {azureAI102Id}</span>
-          </li>
-          <li>
-            MS AI-900: Azure AI Fundamentals — <span className="credential-id">Credential ID: {azureAI900Id}</span>
-          </li>
-          <li>Career Essentials in Generative AI by Microsoft &amp; LinkedIn</li>
-        </ul>
-      )
-    },
-    {
-      title: 'Get in Touch',
-      content: (
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="https://www.linkedin.com/in/alexei-korol/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="get-in-touch-button"
-          >
-            <FontAwesomeIcon icon={faLinkedin} /> LinkedIn <FontAwesomeIcon icon={faExternalLinkAlt} className="external-link-icon" />
-          </a>
-          <a
-            href="https://github.com/alexkorol"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="get-in-touch-button"
-          >
-            <FontAwesomeIcon icon={faGithub} /> GitHub <FontAwesomeIcon icon={faExternalLinkAlt} className="external-link-icon" />
-          </a>
-          <a href="mailto:korolalexei@gmail.com" className="get-in-touch-button">
-            <FontAwesomeIcon icon={faEnvelope} /> Email
-          </a>
-        </div>
-      )
-    }
-  ];
-
   return (
     <section id="home" data-section="home" className="home-section">
-      <div className="hero">
-        <span className="eyebrow">Alexei Korol • AI Engineer &amp; Builder</span>
-        <h1 className="hero-title">Designing smarter products with Generative AI, code, and curiosity.</h1>
-        <p className="hero-subtitle">
-          I translate ambiguous ideas into working software, blending automation with thoughtful human experiences. Dive into my recent work, experiments, and AI art explorations below.
-        </p>
-      </div>
+      <header className="hero-shell">
+        <div
+          className="hero-background"
+          aria-hidden="true"
+          style={{
+            backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.36) 54%, rgba(0, 0, 0, 0.74)), linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.72)), url(${process.env.PUBLIC_URL}/images/aiart/dalle3_1.jpg)`
+          }}
+        />
+        <div className="hero-content">
+          <p className="hero-kicker">Alexei Korol / AI systems engineer / Snohomish County, WA</p>
+          <h1>Alexei Korol</h1>
+          <p className="hero-statement">AI evaluation, creative tools, and local model experiments.</p>
+          <p className="hero-subtitle">
+            Current thread: clearer model judgment, less sloppy agents, and generated work you can actually inspect.
+          </p>
+          <div className="hero-actions">
+            <Link className="primary-action" to="/projects">
+              See the work <FontAwesomeIcon icon={faArrowRight} />
+            </Link>
+            <a className="secondary-action" href="https://github.com/alexkorol" target="_blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faGithub} /> GitHub
+            </a>
+          </div>
+        </div>
+        <aside className="hero-panel" aria-label="Current signal">
+          <span className="panel-label">Current signal</span>
+          <strong>Repo2GPT + agent context</strong>
+          <p>Repo maps, token-aware bundles, API jobs, and MCP surfaces for coding agents that need better working memory.</p>
+          <a href="https://github.com/alexkorol/repo2GPT" target="_blank" rel="noopener noreferrer">
+            Repository <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+          </a>
+        </aside>
+      </header>
 
-      <div className="card-container-home grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {cards.map((card) => (
-          <Card key={card.title} title={card.title} content={card.content} />
+      <section className="focus-grid" aria-label="Focus areas">
+        {focusAreas.map((area) => (
+          <article key={area.title} className="focus-card">
+            <FontAwesomeIcon icon={area.icon} />
+            <h2>{area.title}</h2>
+            <p>{area.copy}</p>
+          </article>
         ))}
-      </div>
+      </section>
+
+      <section className="manifesto-band">
+        <div>
+          <span className="section-kicker">Working thesis</span>
+          <h2>AI work gets real when it survives contact with messy inputs, visual judgment, and repeatable process.</h2>
+        </div>
+        <p>
+          The projects here are deliberately uneven in surface polish because they are workbenches, not pitch decks. The through-line is building systems that reveal their assumptions: code tools with token budgets, agent workflows with observable state, game prototypes with documented constraints, and creative tools that do not trust success until the output is seen.
+        </p>
+      </section>
+
+      <Projects featuredOnly />
 
       <GenAITimeline
         items={genAITimeline}
         limit={3}
-        heading="Visual Generative AI Timeline"
-        intro="A quick preview of the systems and styles I have iterated on."
+        heading="Generative image experiments"
+        intro="A smaller, non-carousel view of the visual systems and model eras that shaped my taste."
         cta={(
           <Link className="timeline-link" to="/ai-art/timeline">
-            View the full AI art story
+            Open the full visual timeline <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         )}
       />
 
       <ExperienceTimeline
         experiences={experienceData}
-        heading="Experience & Impact"
-        intro="Snapshots of the teams, products, and outcomes I've driven across high-growth environments."
+        heading="Experience and operating range"
+        intro="Independent AI engineering, field systems discipline, and long-running applied ML study."
       />
+
+      <section className="contact-band">
+        <div>
+          <FontAwesomeIcon icon={faBolt} />
+          <h2>Useful conversations beat generic networking.</h2>
+          <p>Evaluation harnesses, local LLM workflows, creative tooling, browser games, and agent-assisted engineering are the fastest way in.</p>
+        </div>
+        <div className="contact-actions">
+          <a href="mailto:korolalexei@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/alexei-korol/" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
+          </a>
+          <a href="https://github.com/alexkorol" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faGithub} /> GitHub
+          </a>
+        </div>
+      </section>
     </section>
   );
 };

@@ -77,24 +77,12 @@ const ExperienceTimeline = ({ experiences, heading, intro }) => {
               </ul>
               {experience.metrics && (
                 <dl className="experience-metrics">
-                  {experience.metrics.teamSize && (
-                    <div>
-                      <dt>Team</dt>
-                      <dd>{experience.metrics.teamSize}</dd>
+                  {Object.entries(experience.metrics).map(([label, value]) => (
+                    <div key={label}>
+                      <dt>{label}</dt>
+                      <dd>{value}</dd>
                     </div>
-                  )}
-                  {experience.metrics.impact && (
-                    <div>
-                      <dt>Impact</dt>
-                      <dd>{experience.metrics.impact}</dd>
-                    </div>
-                  )}
-                  {experience.metrics.stack && (
-                    <div>
-                      <dt>Stack</dt>
-                      <dd>{experience.metrics.stack}</dd>
-                    </div>
-                  )}
+                  ))}
                 </dl>
               )}
             </div>
@@ -113,8 +101,8 @@ ExperienceTimeline.propTypes = {
       dates: PropTypes.string.isRequired,
       highlights: PropTypes.arrayOf(PropTypes.string).isRequired,
       metrics: PropTypes.shape({
-        teamSize: PropTypes.string,
-        impact: PropTypes.string,
+        scope: PropTypes.string,
+        proof: PropTypes.string,
         stack: PropTypes.string
       })
     })

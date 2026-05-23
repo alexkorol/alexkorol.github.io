@@ -1,47 +1,47 @@
 const experienceData = [
   {
-    role: 'Lead AI Engineer',
-    organization: 'Brightwave Labs',
-    dates: '2023 — Present',
+    role: 'AI/ML Engineer',
+    organization: 'Independent',
+    dates: '2020 - Present',
     highlights: [
-      'Architected generative AI copilots that automated tier-1 support flows and reduced response times from hours to minutes.',
-      'Partnered with design and marketing to ship AI-personalized landing pages that increased qualified leads by 35%.',
-      'Mentored a pod of full-stack engineers adopting retrieval-augmented generation patterns across services.'
+      'Build context-management, evaluation, fine-tuning, and local inference pipelines across creative writing, code analysis, and image tooling.',
+      'Run local LLM experiments on Apple Silicon with MLX and llama.cpp, including 70B+ parameter models for development and evaluation.',
+      'Prototype multi-model workflows that route across Claude, GPT, Gemini, and OpenRouter-backed models with structured outputs.'
     ],
     metrics: {
-      teamSize: '6-person squad',
-      impact: '40% reduction in manual triage',
-      stack: 'Azure OpenAI, LangChain, Next.js, Azure Functions'
+      scope: 'Local-first AI systems',
+      proof: 'SongCraft RAG, Repo2GPT, Pixel Perfecter',
+      stack: 'Python, FastAPI, LangChain, ChromaDB, PyTorch, React'
     }
   },
   {
-    role: 'Senior Software Engineer',
-    organization: 'Nimbus Analytics',
-    dates: '2020 — 2023',
+    role: 'Technical Specialist',
+    organization: 'Interlock Industry',
+    dates: 'Aug 2016 - Present',
     highlights: [
-      'Delivered an experimentation toolkit that let product teams launch ML-driven A/B tests without engineering handoffs.',
-      'Implemented CI/CD workflows with GitHub Actions and Terraform to standardize model deployment pipelines.',
-      'Collaborated with customer success to map analytics insights into executive-ready narratives and dashboards.'
+      'Calibrate, install, and troubleshoot embedded electronic devices against state regulatory standards.',
+      'Manage field service operations where reliability, documentation, and repeatable process matter more than polish.',
+      'Bring that systems discipline into software work: explicit checks, clear logs, and tooling that can be trusted under pressure.'
     ],
     metrics: {
-      teamSize: '12-person platform org',
-      impact: '20% lift in experiment velocity',
-      stack: 'Python, FastAPI, React, Azure ML'
+      scope: 'Field systems and compliance',
+      proof: 'Embedded device calibration',
+      stack: 'Diagnostics, documentation, operations, customer support'
     }
   },
   {
-    role: 'Full-Stack Developer',
-    organization: 'Skyline Ventures',
-    dates: '2017 — 2020',
+    role: 'Self-Directed ML Study',
+    organization: 'Applied AI curriculum and experiments',
+    dates: '2016 - Present',
     highlights: [
-      'Built investor reporting portals with data visualizations that synced live with portfolio company metrics.',
-      'Introduced automated QA pipelines and coding standards that cut production bugs by half year-over-year.',
-      'Led workshops on human-centered product discovery for founders refining their MVP narratives.'
+      'Study and apply Stanford CS229, fast.ai Practical Deep Learning, and DeepLearning.AI material through working projects.',
+      'Hold Microsoft Azure AI Engineer Associate and Azure AI Fundamentals certifications.',
+      'Translate research notes into working systems instead of leaving ideas trapped in notebooks.'
     ],
     metrics: {
-      teamSize: '8-person product team',
-      impact: '2x faster release cadence',
-      stack: 'Node.js, GraphQL, React, PostgreSQL'
+      scope: 'Continuous applied learning',
+      proof: 'Azure AI certified',
+      stack: 'PyTorch, Hugging Face, LoRA/QLoRA, RLHF, GRPO'
     }
   }
 ];

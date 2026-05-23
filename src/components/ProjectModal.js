@@ -124,6 +124,17 @@ const ProjectModal = ({ project, onClose }) => {
             </section>
           )}
 
+          {project.metrics && project.metrics.length > 0 && (
+            <section className="project-modal-section">
+              <h3>Proof Points</h3>
+              <ul className="project-modal-stack">
+                {project.metrics.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <div className="project-modal-links">
             {project.link && (
               <a href={project.link} target="_blank" rel="noopener noreferrer">
@@ -147,6 +158,8 @@ ProjectModal.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    kicker: PropTypes.string,
+    status: PropTypes.string,
     image: PropTypes.string,
     link: PropTypes.string,
     githubRepo: PropTypes.string,
@@ -154,6 +167,7 @@ ProjectModal.propTypes = {
     approach: PropTypes.string.isRequired,
     impact: PropTypes.string.isRequired,
     stack: PropTypes.arrayOf(PropTypes.string),
+    metrics: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   onClose: PropTypes.func.isRequired,
 };

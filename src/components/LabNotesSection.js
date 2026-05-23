@@ -1,7 +1,47 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import matter from 'gray-matter';
 import { marked } from 'marked';
 import '../LabNotes.css';
+
+const parseFrontMatter = (raw) => {
+  if (!raw.startsWith('---')) {
+    return { data: {}, content: raw };
+  }
+
+  const endIndex = raw.indexOf('\n---', 3);
+  if (endIndex === -1) {
+    return { data: {}, content: raw };
+  }
+
+  const frontMatter = raw.slice(3, endIndex).trim().split(/\r?\n/);
+  const content = raw.slice(endIndex + 4).trimStart();
+  const data = {};
+  let activeList = null;
+
+  frontMatter.forEach((line) => {
+    const listItem = line.match(/^\s*-\s+(.+)$/);
+    if (listItem && activeList) {
+      data[activeList].push(listItem[1].replace(/^["']|["']$/g, ''));
+      return;
+    }
+
+    const field = line.match(/^([\w-]+):\s*(.*)$/);
+    if (!field) {
+      return;
+    }
+
+    const [, key, value] = field;
+    if (!value) {
+      data[key] = [];
+      activeList = key;
+      return;
+    }
+
+    activeList = null;
+    data[key] = value.replace(/^["']|["']$/g, '');
+  });
+
+  return { data, content };
+};
 
 const formatDate = (input) => {
   if (!input) return '';
@@ -68,7 +108,7 @@ const LabNotesSection = () => {
             }
 
             const raw = await response.text();
-            const { data, content } = matter(raw);
+            const { data, content } = parseFrontMatter(raw);
 
             return {
               slug: key.replace('./', '').replace(/\.md$/, ''),
@@ -108,13 +148,12 @@ const LabNotesSection = () => {
       <header className="lab-notes-header">
         <h2 className="lab-notes-title">Lab Notes</h2>
         <p className="lab-notes-subtitle">
-          Snapshots from ongoing experiments, toolsmithing sprints, and the occasional
-          late-night breakthrough.
+          Snapshots from experiments, toolsmithing sprints, and the useful parts of unfinished work.
         </p>
       </header>
 
       {status === 'loading' && (
-        <div className="lab-notes-status">Loading lab notes…</div>
+        <div className="lab-notes-status">Loading lab notes...</div>
       )}
 
       {status === 'error' && (

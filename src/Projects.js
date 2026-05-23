@@ -1,82 +1,85 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import Card from './Card';
 import projects from './data/projects';
 import ProjectModal from './components/ProjectModal';
 import './Projects.css';
 
-const Projects = () => {
+const Projects = ({ featuredOnly = false }) => {
   const [selectedProject, setSelectedProject] = useState(null);
-
-  const handleOpenModal = (project) => {
-    setSelectedProject(project);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedProject(null);
-  };
+  const visibleProjects = featuredOnly ? projects.slice(0, 4) : projects;
 
   return (
-    <section id="projects" data-section="projects">
-      <h1 className="text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-        My Projects
-      </h1>
-      <div className="card-container-projects grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project) => (
-          <Card
-            key={project.id}
-            title={project.title}
-            className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
-            content={
-              <div className="flex flex-col h-full">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-auto max-h-48 object-cover mb-4 rounded-t-lg"
-                />
-                <p className="mb-4 flex-grow">{project.description}</p>
-                <div className="project-card-actions mt-auto">
-                  <button
-                    type="button"
-                    className="project-case-study-button"
-                    onClick={() => handleOpenModal(project)}
-                    aria-haspopup="dialog"
-                    aria-expanded={selectedProject?.id === project.id}
-                  >
-                    View case study
-                  </button>
-                  <div className="project-card-links">
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="get-in-touch-button"
-                      >
-                        {project.githubRepo ? 'View Project' : 'GitHub'}{' '}
-                        <FontAwesomeIcon icon={faExternalLinkAlt} className="external-link-icon" />
-                      </a>
-                    )}
-                    {project.githubRepo && (
-                      <a
-                        href={project.githubRepo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="get-in-touch-button"
-                      >
-                        <FontAwesomeIcon icon={faGithub} /> GitHub
-                      </a>
-                    )}
-                  </div>
+    <section id="projects" data-section="projects" className="projects-section">
+      <div className="section-kicker">Selected work</div>
+      <div className="section-header-row">
+        <div>
+          <h1 className="section-heading">Systems with fingerprints.</h1>
+          <p className="section-subheading">
+            Recent projects from GitHub and local work: RAG, repo tooling, game systems, visual QA, and creative data.
+          </p>
+        </div>
+        {!featuredOnly && (
+          <a className="quiet-link" href="https://github.com/alexkorol" target="_blank" rel="noopener noreferrer">
+            GitHub profile <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+          </a>
+        )}
+      </div>
+
+      <div className="project-grid">
+        {visibleProjects.map((project) => (
+          <article className="project-card" key={project.id}>
+            <div className="project-visual">
+              {project.image ? (
+                <img src={project.image} alt="" loading="lazy" />
+              ) : (
+                <div className="project-visual-fallback" aria-hidden="true">
+                  <span>{project.title.slice(0, 2)}</span>
                 </div>
+              )}
+            </div>
+            <div className="project-body">
+              <div className="project-meta-row">
+                <span>{project.kicker}</span>
+                <span>{project.status}</span>
               </div>
-            }
-          />
+              <h2>{project.title}</h2>
+              <p>{project.description}</p>
+              <ul className="project-metrics">
+                {project.metrics?.slice(0, 3).map((metric) => (
+                  <li key={metric}>{metric}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="project-actions">
+              <button
+                type="button"
+                className="project-case-study-button"
+                onClick={() => setSelectedProject(project)}
+                aria-haspopup="dialog"
+                aria-expanded={selectedProject?.id === project.id}
+              >
+                <FontAwesomeIcon icon={faMagnifyingGlass} /> Case study
+              </button>
+              <div className="project-card-links">
+                {project.link && (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} link`}>
+                    <FontAwesomeIcon icon={project.githubRepo ? faArrowUpRightFromSquare : faGithub} />
+                  </a>
+                )}
+                {project.githubRepo && (
+                  <a href={project.githubRepo} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} source`}>
+                    <FontAwesomeIcon icon={faGithub} />
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
         ))}
       </div>
-      {selectedProject && <ProjectModal project={selectedProject} onClose={handleCloseModal} />}
+
+      {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
     </section>
   );
 };
