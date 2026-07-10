@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import casesJson from './cases.json';
-import { corpus } from '../src/generated/content';
+import { corpus } from '../src/generated/corpus';
 import { buildRetrievalOnlyAnswer, retrieve, shouldRefuse } from '../shared/retrieval';
 import type { ChatResponse, EvalResults } from '../src/types';
 

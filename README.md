@@ -41,6 +41,8 @@ Trust boundaries:
 
 The previous Create React App build produced one client-rendered document. Vite now builds the client bundle, then `scripts/prerender.tsx` renders every project and post route with `StaticRouter`. Each route receives its own title, description, canonical URL, Open Graph data, and body HTML. GitHub Pages can serve nested `index.html` files directly, so case studies remain crawlable without a Node server.
 
+The prerendered document is not hydrated as one large React application. Navigation is standard multi-page HTML and a 3.3 KB gzipped progressive-enhancement client owns only the chat form. The 17 KB gzipped retrieval corpus is lazy-loaded only when local degraded mode is actually used. This removed 2.6 seconds of throttled total blocking time caught by CI Lighthouse while keeping the interactive feature intact.
+
 ### Small-corpus retrieval without a hosted vector database
 
 The corpus is fewer than 50 bounded chunks and changes only at deploy time. A committed, deterministic feature-hash embedding avoids an embedding API, model cold start, vector service, and migration drift while still adding bigram and character-trigram similarity to lexical rank. BM25-style score carries 68%; embedding cosine carries 32%. Source-diverse selection prevents several resume chunks from crowding out the project evidence they summarize.

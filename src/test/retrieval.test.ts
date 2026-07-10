@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { corpus, posts, projects } from '../generated/content';
+import { posts, projects } from '../generated/content';
+import { corpus } from '../generated/corpus';
 import { buildRetrievalOnlyAnswer, retrieve, shouldRefuse } from '../../shared/retrieval';
 
 describe('portfolio corpus', () => {
