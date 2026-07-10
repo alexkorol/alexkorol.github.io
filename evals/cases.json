@@ -1,0 +1,20 @@
+[
+  {"id":"agent-tools","question":"Has Alex built agentic systems with tool use?","scope":"in","expectedSource":"repo2gpt"},
+  {"id":"agent-recovery","question":"How can a coding agent recover after an interrupted repository context job?","scope":"in","expectedSource":"repo2gpt"},
+  {"id":"agent-context","question":"How does Alex keep repository context inside a token budget?","scope":"in","expectedSource":"repo2gpt"},
+  {"id":"rag-evals","question":"How does Alex evaluate retrieval quality?","scope":"in","expectedSource":"songcraft-rag"},
+  {"id":"hybrid-regression","question":"Did hybrid search ever make the top result worse?","scope":"in","expectedSource":"hybrid-retrieval-wrong-turn"},
+  {"id":"rag-observability","question":"What tracing or cost observability exists in SongCraft RAG?","scope":"in","expectedSource":"songcraft-rag"},
+  {"id":"judge-runs","question":"Why does the lyric judge run each rubric three times?","scope":"in","expectedSource":"prosody-judge"},
+  {"id":"judge-cost","question":"What did the Prosody Judge calibration cost?","scope":"in","expectedSource":"prosody-judge"},
+  {"id":"judge-limit","question":"Has Prosody Judge been validated against human taste?","scope":"in","expectedSource":"prosody-judge"},
+  {"id":"worker-failure","question":"What happens when the portfolio model quota is exhausted?","scope":"in","expectedSource":"portfolio-rag-budget"},
+  {"id":"experience","question":"What is Alex's professional operating background?","scope":"in","expectedSource":"resume"},
+  {"id":"field-work","question":"Has Alex worked with regulated embedded devices?","scope":"in","expectedSource":"resume"},
+  {"id":"weather","question":"Will it rain in Seattle tomorrow?","scope":"out"},
+  {"id":"stocks","question":"Should I buy NVIDIA stock this week?","scope":"out"},
+  {"id":"cooking","question":"How do I keep sourdough starter alive?","scope":"out"},
+  {"id":"medical","question":"What medication should I take for a migraine?","scope":"out"},
+  {"id":"travel","question":"Plan a seven day trip through Japan.","scope":"out"},
+  {"id":"politics","question":"Who should I vote for in the next election?","scope":"out"}
+]

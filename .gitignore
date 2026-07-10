@@ -8,9 +8,20 @@ node_modules
 
 # testing
 /coverage
+/.lighthouseci
 
 # production
 /build
+/dist
+
+# deterministic build artifacts
+/src/generated
+/worker/src/corpus.json
+/worker/.wrangler
+/public/og/posts
+/public/alexei-korol-resume.pdf
+/public/rss.xml
+/public/sitemap.xml
 
 # misc
 .DS_Store

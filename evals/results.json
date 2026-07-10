@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-07-10T14:22:12.237Z",
+  "mode": "offline-retrieval",
+  "totals": {
+    "inScope": 12,
+    "outOfScope": 6
+  },
+  "metrics": {
+    "expectedSourceRecallAt3": 1,
+    "groundedAnswerRate": 1,
+    "refusalCorrectness": 1
+  }
+}
