@@ -1,6 +1,6 @@
 ---
 title: "Alexei Korol: AI/ML Engineer"
-location: "Snohomish County, Washington"
+location: "Greater Seattle Area"
 email: "korolalexei@gmail.com"
 github: "https://github.com/alexkorol"
 linkedin: "https://www.linkedin.com/in/alexei-korol/"

@@ -30,7 +30,7 @@ function Layout(): JSX.Element {
         </nav>
       </header>
       <main id="main-content"><Routes><Route path="/" element={<HomePage />} /><Route path="/projects/" element={<ProjectsPage />} /><Route path="/projects/:slug/" element={<ProjectPage />} /><Route path="/lab-notes/" element={<NotesPage />} /><Route path="/lab-notes/:slug/" element={<PostPage />} /><Route path="/how-it-works/" element={<HowItWorksPage />} /><Route path="/generative-ai-experiments/" element={<ExperimentsPage />} /><Route path="*" element={<HomePage />} /></Routes></main>
-      <footer className="site-footer"><div><strong>Alexei Korol</strong><span>AI systems engineer · Snohomish County, WA</span></div><nav aria-label="Footer navigation"><a href="mailto:korolalexei@gmail.com">Email</a><a href="https://www.linkedin.com/in/alexei-korol/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/alexkorol" target="_blank" rel="noreferrer">GitHub</a><a href="/rss.xml">RSS</a></nav></footer>
+      <footer className="site-footer"><div><strong>Alexei Korol</strong><span>AI systems engineer · Greater Seattle Area</span></div><nav aria-label="Footer navigation"><a href="mailto:korolalexei@gmail.com">Email</a><a href="https://www.linkedin.com/in/alexei-korol/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/alexkorol" target="_blank" rel="noreferrer">GitHub</a><a href="/rss.xml">RSS</a></nav></footer>
     </div>
   );
 }
