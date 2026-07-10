@@ -155,7 +155,7 @@ export function buildRetrievalOnlyAnswer(hits: RetrievalHit[], reason = 'model_u
     return `${excerpt} [${hit.id}]`;
   });
   const prefix = reason === 'local_demo'
-    ? 'Retrieval-only demo — the deployed model endpoint is not configured in this build.'
+    ? 'Retrieval-only demo: the deployed model endpoint is not configured in this build.'
     : 'The model endpoint is temporarily unavailable, so here is the retrieved evidence instead.';
   return `${prefix}\n\n${evidence.join('\n\n')}`;
 }

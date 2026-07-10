@@ -1,4 +1,4 @@
-# Alexei Korol — AI engineering portfolio
+# Alexei Korol: AI engineering portfolio
 
 [![CI and deploy](https://github.com/alexkorol/alexkorol.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/alexkorol/alexkorol.github.io/actions/workflows/ci.yml)
 

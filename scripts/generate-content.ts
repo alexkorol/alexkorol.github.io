@@ -116,7 +116,7 @@ async function generateResumePdf(rawMarkdown: string): Promise<void> {
   let page = pdf.addPage([width, height]);
   let y = height - margin;
 
-  const safe = (value: string) => value.replace(/[–—]/g, '-').replace(/→/g, 'to').replace(/[^ -~]/g, '');
+  const safe = (value: string) => value.replace(/[\u2013\u2014]/g, '-').replace(/→/g, 'to').replace(/[^ -~]/g, '');
   const drawWrapped = (value: string, size: number, font: typeof regular, color = rgb(0.12, 0.15, 0.17), gap = size * 1.35) => {
     const words = safe(value).split(/\s+/);
     let line = '';
@@ -209,7 +209,7 @@ async function main(): Promise<void> {
   await generateResumePdf(resumeRaw);
 
   const rssItems = posts.map((post) => `<item><title>${escapeXml(post.title)}</title><link>${siteUrl}/lab-notes/${post.slug}/</link><guid>${siteUrl}/lab-notes/${post.slug}/</guid><pubDate>${new Date(`${post.date}T12:00:00Z`).toUTCString()}</pubDate><description>${escapeXml(post.summary)}</description></item>`).join('');
-  const rss = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Alexei Korol — AI engineering notes</title><link>${siteUrl}/lab-notes/</link><description>Measured notes on RAG, agents, evaluation, and production LLM systems.</description><language>en-us</language>${rssItems}</channel></rss>`;
+  const rss = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Alexei Korol: AI engineering notes</title><link>${siteUrl}/lab-notes/</link><description>Measured notes on RAG, agents, evaluation, and production LLM systems.</description><language>en-us</language>${rssItems}</channel></rss>`;
   await fs.writeFile(path.join(root, 'public', 'rss.xml'), rss);
 
   const routes = ['/', '/projects/', '/lab-notes/', '/how-it-works/', '/generative-ai-experiments/', ...projects.map((project) => `/projects/${project.slug}/`), ...posts.map((post) => `/lab-notes/${post.slug}/`)];

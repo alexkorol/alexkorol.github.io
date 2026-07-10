@@ -1,5 +1,5 @@
 ---
-title: "Alexei Korol — AI/ML Engineer"
+title: "Alexei Korol: AI/ML Engineer"
 location: "Snohomish County, Washington"
 email: "korolalexei@gmail.com"
 github: "https://github.com/alexkorol"
@@ -11,15 +11,15 @@ AI/ML engineer building and evaluating LLM-powered systems: retrieval, agent con
 
 ## Selected engineering work
 
-### Repo2GPT — Agent context infrastructure
+### Repo2GPT: Agent context infrastructure
 
 Built a Python CLI, FastAPI job service, React control panel, and MCP server that produce language-aware repository maps and token-bounded code artifacts for coding agents. Added persisted jobs, SSE progress, authentication, health checks, and test coverage for the processing and MCP paths.
 
-### SongCraft RAG — Evaluated retrieval system
+### SongCraft RAG: Evaluated retrieval system
 
 Built a 45-document, 2,376-page RAG corpus with local BGE-small embeddings, BM25+dense fusion, cross-encoder reranking, cited answers, cost/latency stats, and an 83-question golden set. The checked-in hybrid-rerank result reaches 0.952 document recall@10 and 0.711 exact-chunk recall@5.
 
-### Prosody Judge — LLM evaluation pipeline
+### Prosody Judge: LLM evaluation pipeline
 
 Built an async eight-rubric LLM-as-a-judge tool with three-run self-consistency, structured outputs, uncertainty flags, checkpoint/resume behavior, and spend limits. The current four-item calibration is explicitly scoped as a smoke test pending human-correlation validation.
 
